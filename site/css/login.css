@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block
+}
+
+body{
+    background-color: #add8e6;
+    padding-top: 10%;
+
+}
+h2{
+    padding-top: 5%;
+}
+
+.imagem{
+    padding-top: 10%;
+    background-color: white;
+    float: left;
+    width: 42.5%;
+    max-width: 42.5%;
+    align-items: left;
+}
+.imag{
+
+    padding-top: 5%;
+    float: center;
+    width: 42.5%;
+    max-width: 42.5%;
+    align-items: left;
+    padding-bottom: 15%
+}
+
+.vl{
+    float: left;
+    width: 15%;
+}
+
+.campo-login{
+    text-align: left;
+    align-items: left;
+
+}
+.login{
+    background-color: white;
+    float: left;
+    width: 42.5%;  
+}
+
+a{
+    text-decoration: none;
+}
