@@ -61,7 +61,7 @@ if(isset($_POST['cadastrar'])){
 			?>
 			<div class="container">
 				<div class="signup-content">
-					<form action="cad_form.php" method="post" id="signup-form" class="signup-form">
+					<form action="cadastro_usuario.php" method="post" id="signup-form" class="signup-form">
 						<div class="form-row">
 							<?php
 								if(isset($erros['insert'])){
@@ -119,7 +119,7 @@ if(isset($_POST['cadastrar'])){
 								<input type="checkbox" id="termos" name="termos" value="<?=empty($termos) ? 1 : '';?>">
 								<span class="msg-erro" id="msg-termos"><?=@$erros['termos'];?></span>
 							</div>
-							<a href="www.google.com" target="_blank">Ver Termos de uso</a>
+							<a href="termos.php" target="_blank">Ver Termos de uso</a>
 							<div class="form-item">
 								<label class="label-alinhado"></label>
 								<input type="submit" id="botao" value="Confirmar" name="cadastrar">
@@ -127,7 +127,7 @@ if(isset($_POST['cadastrar'])){
 							<br>
 							<div class="form-item">
 								<label class="label-alinhado"></label>
-								<input type="button" value="Cancelar" name="cacelar">
+								<input type="button" value="Cancelar" name="cacelar" onclick="location.href= 'login.php' ">
 							</div>
 							<br>
 						</div>
