@@ -1,13 +1,15 @@
 <?php
 	include "conexao.php";
 
-	$sql = "select email, senha, nome from usuarios ";
 	$email = $_POST['email'];
-	$sql .= "where usuarios.email = '$email'";
-	$resultado = mysqli_query($conexao, $sql);
 	$senha = md5($_POST['senha']);
+
+	$statement = $conexao->prepare("select email, senha, nome, saldo from usuarios where email = ?");
+	$statement->bind_param("s", $email);
+	$statement->execute();
+	$result = $statement->get_result();
 	
-	$logins = mysqli_fetch_array($resultado);	//'$logins' recebe uma linha de cada vez, da variavel '$resultado' que possui os dados de login do BD
+	$logins = $result->fetch_assoc();	//'$logins' recebe uma linha de cada vez, da variavel '$resultado' que possui os dados de login do BD
 	if (empty($_POST["email"])) {
 		header("Location: ../login.php?erro=4");	//campo email vazio
 	}else{
@@ -36,6 +38,7 @@
 						$_SESSION['email'] = $logins['email']; 
 						$_SESSION['senha'] = $logins['senha'];
 						$_SESSION['nome'] = $logins['nome'];
+						$_SESSION['saldo'] = $logins['saldo'];
 						header("Location: header.php");	//redireciona para a pagina inicial
 					}
 				}
