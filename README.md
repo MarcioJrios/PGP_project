@@ -5,5 +5,5 @@ Membros da equipe:
 Marcio J. Rios(git: marciojrios), 
 Marcelo E. Knob(git: marceloek) vulgo Kirito,
 Philipe Soares(git: godmerlin),
-Otávio Secco,
+Otávio Secco(git: seccoboy),
 Kevin Willian(git: euzin4)
