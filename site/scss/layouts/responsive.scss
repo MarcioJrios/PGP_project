@@ -1,0 +1,13 @@
+//end 992px
+@media screen and (max-width: 768px) {
+    .container {
+        width: calc( 100% - 30px);
+        max-width: 100%;
+    }
+
+}
+
+//end 767px
+@media screen and (max-width: 575px) {
+
+}
