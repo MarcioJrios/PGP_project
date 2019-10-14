@@ -1,11 +1,9 @@
 <?php
-session_start();
-
-// if(!(isset($_SESSION["login"])))
-//         header("Location: login.php");
-
 include "includes/conexao.php";
-//include "includes/cabecalho.php";
+include "includes/header.php";
+
+if(!(isset($_SESSION['email'])))
+	header("Location: login.php");
 
 $erros = array();
 
@@ -155,11 +153,10 @@ if(isset($_POST['cadastrar'])){
 					</label>
 					<span class="msg-erro" id="msg-tipo_camp"><?=@$erros['tipo_camp'];?></span>
 				</div>
-				<br>
 				<div>
-				<a href="cadastro_equipe.php">Cadastrar equipes</a>
+				<p><a href="cadastro_equipe.php">Cadastrar equipes</a><br>
+				<a href="page_admin.php">Voltar para a pagina do admin</a></p>
 				</div>
-				<br>
 				<br>
 				<div class="botao">
 					<div class="form-item">

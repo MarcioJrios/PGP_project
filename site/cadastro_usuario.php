@@ -1,7 +1,11 @@
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
 <?php
  
 include "includes/conexao.php";
-include "includes/header.php";
 $erros = array();
 if(isset($_POST['cadastrar'])){
 	$nick = trim($_POST['nick']);
@@ -42,88 +46,99 @@ if(isset($_POST['cadastrar'])){
 			$statement->execute();
 		}
 		else{
-            $erros['email'] = "Email já cadastrado";
-            
+			$erros['email'] = "Email já cadastrado";
 
 		}
 	}
 }	
 ?>
 
-<main>
-	<div class="col-10">
-
-		<?php
-		if(!(isset($_POST['cadastrar'])) || (isset($erros) && count($erros))){
-		?>
-		
-		<form action="cadastro_usuario.php" method="post" id="form-contato">
-			<div class="signup">
-				<?php
-					if(isset($erros['insert'])){
-						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo cliente!</p>';
+<body>
+	<div class="main">
+		<section class="signup">
+			<?php
+			if(!(isset($_POST['cadastrar'])) || (isset($erros) && count($erros))){
+			?>
+			<div class="container">
+				<div class="signup-content">
+					<form action="cad_form.php" method="post" id="signup-form" class="signup-form">
+						<div class="form-row">
+							<?php
+								if(isset($erros['insert'])){
+									echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo cliente!</p>';
+								}
+							?>
+							
+							<div class="form-group">
+								<label for="nick" class="label-alinhado">Nick:</label>
+								<input type="text" id="nick" name="nick" size="50" placeholder="Nickname"value="<?=isset($nick) ? $nick : '';?>">
+								<span class="msg-erro" id="msg-nick"><?=@$erros['nick'];?></span>
+							</div>
+							<div class="form-group">
+								<label for="nome" class="label-alinhado">Nome:</label>
+								<input type="text" id="nome" name="nome" size="50" placeholder="Nome completo" pattern="[A-Za-z\s]+$" value="<?=isset($nome) ? $nome : '';?>">
+								<span class="msg-erro" id="msg-nome"><?=@$erros['nome'];?></span>
+							</div>
+						</div>
+						<div class="form-row">	
+							<div class="form-group form-icon"><label for="nasc" class="label-alinhado">Data de nascimento:</label>
+								<input type="date" id="nasc" name="nasc" value="<?=isset($nasc) ? $nasc : '';?>">
+								<span class="msg-erro" id="msg-nasc"><?=@$erros['nasc'];?></span>
+								
+							</div>
+							<div class="form-radio">
+								
+								<label for="gender">Sexo</label>
+								<div class="form-flex">
+									<input type="radio" id="male" name="sexo" value="<?=isset($sexo) ? 'm' : '';?>" checked="checked"/><label for="male">Masculino</label>
+									
+									<input type="radio" name="sexo" id="female" value="<?=isset($sexo) ? 'f' : '';?>"/><label for="female">Feminino</label>
+								</div>	
+							</div>
+						</div>
+							<div class="form-group">
+								<label for="email" class="label-alinhado">E-mail:</label>
+								<input type="email" id="email" name="email" placeholder="fulano@dominio" size="50" value="<?=isset($email) ? $email : '';?>">
+								<span class="msg-erro" id="msg-email"><?=@$erros['email'];?></span>
+								
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label for="senha" class="label-alinhado">Senha:</label>
+									<input type="password" id="password" name="senha" placeholder="Mínimo 6 caracteres" value="<?=isset($senha) ? $senha : '';?>">
+									<span class="msg-erro" id="msg-senha"><?=@$erros['senha'];?></span>
+								</div>
+								<div class="form-group">
+									<label for="senha1" class="label-alinhado">Repita a Senha:</label>
+									<input type="password" id="re_password" name="senha1" placeholder="Mínimo 6 caracteres"value="<?=isset($senha1) ? $senha1 : '';?>">
+									<span class="msg-erro" id="msg-senha1"><?=@$erros['senha1'];?></span>
+								</div>
+							</div> 
+							<div class="form-item">
+								<label for='termos' class="label-alinhado">Li e concordo com os termos de uso</label>
+								<input type="checkbox" id="termos" name="termos" value="<?=empty($termos) ? 1 : '';?>">
+								<span class="msg-erro" id="msg-termos"><?=@$erros['termos'];?></span>
+							</div>
+							<a href="www.google.com" target="_blank">Ver Termos de uso</a>
+							<div class="form-item">
+								<label class="label-alinhado"></label>
+								<input type="submit" id="botao" value="Confirmar" name="cadastrar">
+							</div>
+							<br>
+							<div class="form-item">
+								<label class="label-alinhado"></label>
+								<input type="button" value="Cancelar" name="cacelar">
+							</div>
+							<br>
+						</div>
+					</form>
+					<?php
+					}else{
+						header("Location: login.php");
 					}
-				?>
-				<h2 id="hhh">Cadastre-se</h2>
-				<div class="form-item">
-					<label for="nick" class="label-alinhado">Nick:</label>
-					<input type="text" id="nick" name="nick" size="50" placeholder="Nickname"value="<?=isset($nick) ? $nick : '';?>">
-					<span class="msg-erro" id="msg-nick"><?=@$erros['nick'];?></span>
-				</div>
-				<div class="form-item">
-					<label for="nome" class="label-alinhado">Nome:</label>
-					<input type="text" id="nome" name="nome" size="50" placeholder="Nome completo" pattern="[A-Za-z\s]+$" value="<?=isset($nome) ? $nome : '';?>">
-					<span class="msg-erro" id="msg-nome"><?=@$erros['nome'];?></span>
-				</div>
-				<div class="form-item">
-					<label for="email" class="label-alinhado">E-mail:</label>
-					<input type="email" id="email" name="email" placeholder="fulano@dominio" size="50" value="<?=isset($email) ? $email : '';?>">
-					<span class="msg-erro" id="msg-email"><?=@$erros['email'];?></span>
-				</div>
-				<div class="form-item">
-					<label for="nasc" class="label-alinhado">Data de nascimento:</label>
-					<input type="date" id="nasc" name="nasc" value="<?=isset($nasc) ? $nasc : '';?>">
-					<span class="msg-erro" id="msg-nasc"><?=@$erros['nasc'];?></span>
-				</div>
-				<div class="form-item">
-					Sexo:<label><input type="radio" name="sexo" value="<?=isset($sexo) ? "m" : '';?>" checked>Masculino</label><label><input type="radio" name="sexo" value="<?=isset($sexo) ? "f" : '';?>">Feminino</label>
-				</div>
-				<div class="form-item">
-					<label for="senha" class="label-alinhado">Senha:</label>
-					<input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" value="<?=isset($senha) ? $senha : '';?>">
-					<span class="msg-erro" id="msg-senha"><?=@$erros['senha'];?></span>
-				</div>
-				<div class="form-item">
-					<label for="senha1" class="label-alinhado">Repita a Senha:</label>
-					<input type="password" id="senha1" name="senha1" placeholder="Mínimo 6 caracteres"value="<?=isset($senha1) ? $senha1 : '';?>">
-					<span class="msg-erro" id="msg-senha1"><?=@$erros['senha1'];?></span>
-				</div>
-				<div class="form-item">
-					<label for='termos' class="label-alinhado">Li e concordo com os termos de uso</label>
-					<input type="checkbox" id="termos" name="termos" value="<?=empty($termos) ? 1 : '';?>">
-					<span class="msg-erro" id="msg-termos"><?=@$erros['termos'];?></span>
-				</div>
-				<a href="www.google.com" target="_blank">Ver Termos de uso</a>
-				<div class="form-item">
-					<label class="label-alinhado"></label>
-					<input type="submit" id="botao" value="Confirmar" name="cadastrar">
-				</div>
-				<br>
-				<div class="form-item">
-					<label class="label-alinhado"></label>
-					<input type="button" value="Cancelar" name="cacelar">
-				</div>
-				<br>
+					?>
+				</div>	
 			</div>
-		</form>
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="js/jquery.mask.min.js"></script>
-		<script src="js/functions.js"></script>
-		<script src="js/cad.js"></script>
-		<?php
-		}else{
-			echo "<p>Cliente <strong>cadastrado</strong> com sucesso!</p>";
-		}
-		?>
+		</section>
 	</div>
-</main>
+</body>

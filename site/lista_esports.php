@@ -1,39 +1,33 @@
 <?php
-session_start();
 
 include "includes/conexao.php";
 include "includes/header.php";
 
+if(isset($_POST['cadastrar'])){
+	$game = trim($_POST['game']);
+	print_r($game);
+}
 ?>
-<section>
-<div class="container">
-		<h2>Jogos Disponíveis</h2>
-        <?php
-		$sql = " select games.id_game, games.nome, games.id_categoria from games;"; 	// busca os 3 mais pedidos
-	$resultado = mysqli_query($conexao, $sql);
-	foreach($resultado as $game=>$item){		
-		// busca os detalhes de cada um dos 3 mais pedidos
-		//$sql = " select id, nome, imagem, preco, datalan, promocao from produto where codp = $categoria";
-		//$res = mysqli_query($conexao, $sql);
-		//$produto = mysqli_fetch_array($res);
-		?>
-			<div class="produto">
-				<a href="produto.php?codp=<?=$produto['codp'];?>">
-					<figure>
-						<img src="img/<?=mostraImagem($produto['imagem']);?>" alt="<?=$produto['nome'];?>">
-						<figcaption><?=$produto['nome'];?>
-						<?=$produto['datalan']?>
-						<span class="preco">
-							<?=mostraPreco($produto['preco'], $produto['promocao']);?>			
-						</span>
-						</figcaption>
-					</figure>
-				</a>
-			</div>  
-		</section>
-	<?php
-	}//include "asideAdm.php";
-	?>
-</div>
-</section>
 
+<section>
+<div class="jogos_disponiveis">
+	<h2>Jogos Disponíveis</h2>
+	<div class="lista_jogo">
+	<form action="lista_esports.php" method="post" id="form-contato">
+	<?php 
+	$statement = $conexao->prepare("select id_game, nome from games");
+	$statement->execute();
+	$assoc = $statement->get_result();
+	while ($res = $assoc->fetch_assoc()){
+		echo '<p><input type="radio" name="game" value='.$res['id_game'].'> '.$res['nome'].'</p>';
+	}
+	?>
+	<div class="botao">
+		<div class="form-item">
+			<label class="label-alinhado"></label>
+			<input type="submit" id="botao" value="Confimar" name="confimar">
+		</div>
+	</div>
+	</form>
+	</div>
+</div>

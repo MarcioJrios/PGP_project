@@ -17,19 +17,25 @@
 	<!-- cabeçalho -->
 	<header>
 		<h1>Site Aposta</h1>
-		<input type="image" src="logo.jpg" width="500" height="100" >
-		<input type="image" src="user.png" width="48" height="48">
+		<input type="image" src="../logo.jpg" width="500" height="100" >
+		<input type="image" src="../user.png" width="48" height="48">
 
 			<?php
 			if(isset($_SESSION["email"]) && isset($_SESSION["nome"])){
 				$variavel = "Olá, ";
 				$variavel.= $_SESSION["nome"] ;
+				?>
+				<br>
+			<?php
+				$variavel2 = " Saldo:";
+				$variavel2.= $_SESSION["saldo"];
 				
-				?><a href=sair.php><input type="image" src="sair.jpg" width="48" height="48"></a>
+				?><a href=includes/sair.php><input type="image" src="sair.jpg" width="48" height="48"></a>
 				<?php
 			}else{
-				$variavel = "<a href=\"login.php\">Login</a>";
+				$variavel = "<a href=\"../login.php\">Login</a>";
+				$variavel2 = "";
 			}
 			 ?>
-		<p class="carrinho"><?=$variavel?> &nbsp;&nbsp;&nbsp;&nbsp;</p>
+		<p class="carrinho"><?php echo ''.$variavel.''.$variavel2.''?> &nbsp;&nbsp;&nbsp;&nbsp;</p>
 	<!-- fim cabeçalho -->

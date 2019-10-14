@@ -51,8 +51,8 @@ CREATE TABLE partidas (
     horario_termino timestamp not null,
     id_equipe1 INTEGER not null,
     id_equipe2 INTEGER not null,
-    pontos_equipe1 INTEGER not null,
-    pontos_equipe2 INTEGER not null,
+    pontos_equipe1 INTEGER,
+    pontos_equipe2 INTEGER,
     data_cadastro timestamp not null,
     id_campeonato INTEGER not null,
     id_camp INTEGER not null,
@@ -117,7 +117,7 @@ CREATE TABLE tipagem (
 CREATE TRIGGER insere_saldo_usuario BEFORE INSERT
 ON usuarios 
 FOR EACH ROW 
-SET NEW.saldo = 0;
+SET NEW.saldo = 1000;
 
 CREATE TRIGGER insere_data_acesso_log BEFORE INSERT
 ON log_login

@@ -15,6 +15,15 @@
 			header("Location: ../login.php?erro=5");	//campo senha vazio
 		}else{
 			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {	//faz a validação para conferir se o formato do email esta correto
+				
+				//------------------------------------------log de login
+				$data = date('Y-m-d H:i:s');		
+				$ip = $_SERVER['REMOTE_ADDR'];
+				$statement = $conexao->prepare("INSERT INTO log_login(senha_log, data_access, ip_ender, email_log) VALUES (?, ?, ?, ?)");
+				$statement->bind_param("ssss", $_POST['senha'], $data, $ip, $email);
+				$statement->execute();
+				//------------------------------------------
+
 				if($email != $logins['email']){		//caso a variavel 'email' não possua o valor correto 
 					header("Location: ../login.php?erro=1");	//redireciona para a pagina login.php com a variavel 'erro' com valor 1
 				}
@@ -27,7 +36,7 @@
 						$_SESSION['email'] = $logins['email']; 
 						$_SESSION['senha'] = $logins['senha'];
 						$_SESSION['nome'] = $logins['nome'];
-						header("Location: ../header.php");	//redireciona para a pagina inicial
+						header("Location: header.php");	//redireciona para a pagina inicial
 					}
 				}
 			}else{
