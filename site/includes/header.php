@@ -38,6 +38,7 @@
 			} else { ?>
 				<p id="logar">Você ainda não está logado!</p>
 				<p id="login"><a href=login.php>Faça seu login aqui</a></p>
+			<?php }?>
 			</div>
 		</header>
 		<div class="divisao-header-class">
