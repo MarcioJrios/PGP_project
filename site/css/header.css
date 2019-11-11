@@ -30,7 +30,7 @@ header {
 .usuario-class{
 	display: flex;
 	justify-content: center;
-	width: 25%;
+	width: 10%;
 }
 .usuario-class img{
 	height: 120px;
@@ -39,7 +39,7 @@ header {
 .logo-class{
 	display: flex;
 	justify-content: center;
-	width: 50%;
+	width: 65%;
 }
 
 .sair-class {
