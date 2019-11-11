@@ -54,7 +54,6 @@ CREATE TABLE partidas (
     pontos_equipe1 INTEGER,
     pontos_equipe2 INTEGER,
     data_cadastro timestamp not null,
-    id_campeonato INTEGER not null,
     id_camp INTEGER not null,
 	constraint partidas primary key(id_partida),
     constraint fk_partidas_campeonatos foreign key (id_camp) references campeonatos(id_camp)
