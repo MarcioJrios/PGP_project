@@ -17,8 +17,8 @@
 	<!-- cabeçalho -->
 	<header>
 		<h1>Site Aposta</h1>
-		<input type="image" src="../logo.jpg" width="500" height="100" >
-		<input type="image" src="../user.png" width="48" height="48">
+		<input type="image" src="imagens/logo.jpg" width="500" height="100" >
+		<input type="image" src="imagens/user.png" width="48" height="48">
 
 			<?php
 			if(isset($_SESSION["email"]) && isset($_SESSION["nome"])){
@@ -30,7 +30,7 @@
 				$variavel2 = " Saldo:";
 				$variavel2.= $_SESSION["saldo"];
 				
-				?><a href=includes/sair.php><input type="image" src="sair.jpg" width="48" height="48"></a>
+				?><a href=sair.php><input type="image" src="imagens/sair.jpg" width="48" height="48"></a>
 				<?php
 			}else{
 				$variavel = "<a href=\"../login.php\">Login</a>";
