@@ -10,8 +10,10 @@
 	}
 ?>
 
-<div clas=''>
+<div class='Container'>
 	<a href="cadastro_equipe.php">Cadastrar Equipe</a>
 	<a href="cadastro_campeonato.php">Cadastrar Campeonato</a>
-	<a href="cadastro_partidas.php">Cadastrar Partidas</a>
+	<a href="cadastro_partida.php">Cadastrar Partidas</a>
+	<a href="atualizar_resultado.php">Atualiza Resultados</a>
+
 </div>	
