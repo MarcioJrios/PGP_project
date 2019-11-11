@@ -1,3 +1,12 @@
+<?php
+@session_start();
+
+if(isset($_SESSION['tipo_usuario'])){
+        header("Location: includes/header.php");
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
