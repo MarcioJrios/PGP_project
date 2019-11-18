@@ -9,6 +9,15 @@ if(isset($_SESSION['tipo_usuario'])){
 }else{
     header("Location: ../login.php");
 }
+if(isset($_POST['cadastrar'])){
+	$equipe1 = $_POST['equipe1'];
+	$equipe2 = $_POST['equipe2'];
+	$partida = $_POST['partida'];
+
+	$statement = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where id_partida = ? ;");
+	$statement->bind_param("iii", $equipe1, $equipe2,$partida);
+	$statement->execute();
+}
 ?>
 <section>
 <div class="jogos_disponiveis">
@@ -16,48 +25,38 @@ if(isset($_SESSION['tipo_usuario'])){
 	<div class="Partidas">
 	<form action="atualiza_partida.php" method="post" id="form-contato">
 	<?php 
-        $sql = "select id_partida,id_equipe1,id_equipe2 from partidas WHERE pontos_equipe1 is NULL and pontos_equipe2 is NULL";
-        $res = mysqli_query($conexao, $sql);
-	while ($lista = mysqli_fetch_array($res)){
-		
-		//  echo '<p><input type="number" name="equipe1" value='.$lista['id_partida'].'> '.$lista['nome'].'</p>';
+		$id_partida = $_GET['partida'];
+        $sql = "select id_partida,id_equipe1,id_equipe2 from partidas WHERE id_partida = $id_partida";
+		$res = mysqli_query($conexao, $sql);
+		$res = mysqli_fetch_array($res);
+	
 		#equipe 1
-		$equipe1 = $lista['id_equipe1'];
+		$equipe1 = $res['id_equipe1'];
 		$sql = " select * from equipes WHERE id_equipe = $equipe1";
 		$equipe1 = mysqli_query($conexao, $sql);
 		$equipe1 = mysqli_fetch_array($equipe1);
 		?>
-			<div class="equipe1">
-				
-					<figure>
-						<figcaption>
-						<?=$equipe1['sigla'];?>
-						</figcaption>
-					</figure>
-				</a>
-			</div>
-		
-		<h3>VS</h3>
-		<?php
+			<div class="partida">
+				<div class="equipe1">
+						<?= '<p><input type="number" name="equipe1" value='.$res['id_partida'].'> '.$equipe1['sigla'].'</p>';?>
+				</div>
+	
+				<h3>VS</h3>
+				<?php
 
-		#equipe 2
-		$equipe2 = $lista['id_equipe2'];
-		$sql = " select * from equipes WHERE id_equipe = $equipe2";
-		$equipe2 = mysqli_query($conexao, $sql);
-		$equipe2 = mysqli_fetch_array($equipe2);
-		?>
-			<div class="equipe2">
-			
-					<figure>
-						<figcaption>
-						<?=$equipe2['sigla'];?>
-						</figcaption>
-					</figure>
-				</a>
-			</div>
-		</div>  <!--Div de partida-->
-	<?php	
-	}
+				#equipe 2
+				$equipe2 = $res['id_equipe2'];
+				$sql = " select * from equipes WHERE id_equipe = $equipe2";
+				$equipe2 = mysqli_query($conexao, $sql);
+				$equipe2 = mysqli_fetch_array($equipe2);
+				?>
+					
+					<div class="equipe2">
+						<?= '<p><input type="number" name="equipe2" value='.$res['id_partida'].'> '.$equipe2['sigla'].'</p>';?>
+						
+					</div>
+			</div>  <!--Div de partida-->
+			<?php	
 	?>
 	<div class="botao">
 		<div class="form-item">
@@ -65,6 +64,7 @@ if(isset($_SESSION['tipo_usuario'])){
 			<input type="submit" id="botao" value="Confimar" name="confimar">
 		</div>
 	</div>
+		<input type="hidden" id="partida" name="partida" value="<?=isset($partida) ? $parida : '';?>">
 	</form>
 	</div>
 </div>
