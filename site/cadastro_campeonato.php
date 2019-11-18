@@ -33,7 +33,7 @@ if(isset($_POST['cadastrar'])){
 		$erros['tipo_camp'] = "Informe um tipo de campeonato válido";
 	if(empty($sigla))
 		$erros['sigla'] = "Digite uma sigla para o campeonato";
-	if(strlen($sigla) != 6)
+	if(strlen($sigla) > 6)
 		$erros['sigla'] = "Número de caracteres inválidos (6 caracteres)";
 	if(empty($equipe))
 		$erros['equipe'] = "Selecione alguma equipe para o campeonato";
@@ -87,7 +87,7 @@ if(isset($_POST['cadastrar'])){
 			<div class="cadastro_campeonato">
 				<?php
 					if(isset($erros['insert'])){
-						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo clientecampeonato!</p>';
+						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo campeonato!</p>';
 					}
 				?>
 				<h2 id="id_cadastro_campeonato">Cadastro de campeonato oficial</h2>
@@ -102,7 +102,7 @@ if(isset($_POST['cadastrar'])){
 					<span class="msg-erro" id="msg-sigla"><?=@$erros['sigla'];?></span>
 				</div>
 				<div class="form-item">
-					<label for="game" class="label-alinhado">Game:
+					<label for="game" class="label-alinhado">Game:<br>
 					<select name="game">
 						<option value="">-------- Selecione o game --------</option>
 
@@ -119,54 +119,51 @@ if(isset($_POST['cadastrar'])){
 					<span class="msg-erro" id="msg-game"><?=@$erros['tipo_game'];?></span>
 				</div>
 				<div class="form-item">
-						<label for='equipe' class="label-alinhado">Selecione as equipes que fazem parte do campeonato:</label>
-						<?php
-							$statement = $conexao->prepare("select id_equipe, id_game, nome from equipes");
-							$statement->execute();
-							$assoc = $statement->get_result();
+					<label for='equipe' class="label-alinhado">Selecione as equipes do campeonato:<br></label>
+					<?php
+						$statement = $conexao->prepare("select id_equipe, id_game, nome from equipes");
+						$statement->execute();
+						$assoc = $statement->get_result();
 
-							while ($res = $assoc->fetch_assoc()){
-								$statement = $conexao->prepare("select nome from games where id_game = ?");
-								$statement->bind_param("i", $res['id_game']);
-								$statement->execute();
-								$res2 = $statement->get_result();
-								$res2 = $res2->fetch_assoc();
-								echo '<br><input type="checkbox" name="equipe[]" value="'.$res['id_equipe'].'"><label>'.$res['nome'].'</label> ('.$res2['nome'].')';
-							}
-							?>
-							<br>
-							<span class="msg-erro" id="msg-equipe"><?=@$erros['equipe'];?></span>
-						</div>
+						while ($res = $assoc->fetch_assoc()){
+							$statement = $conexao->prepare("select nome from games where id_game = ?");
+							$statement->bind_param("i", $res['id_game']);
+							$statement->execute();
+							$res2 = $statement->get_result();
+							$res2 = $res2->fetch_assoc();
+							echo '<br><input type="checkbox" name="equipe[]" value="'.$res['id_equipe'].'"><label>'.$res['nome'].'</label> ('.$res2['nome'].')';
+						}
+						?>
+					<br>
+					<span class="msg-erro" id="msg-equipe"><?=@$erros['equipe'];?></span>
+				</div>
 				<div class="form-item">
 					<label for="data_inicio" class="label-alinhado">Data de início:</label>
 					<input type="date" id="data_inicio" name="data_inicio" value="<?=isset($data_inicio) ? $data_inicio : '';?>">
-							<span class="msg-erro" id="msg-data_inicio"><?=@$erros['data_inicio'];?></span>
+					<span class="msg-erro" id="msg-data_inicio"><?=@$erros['data_inicio'];?></span>
 				</div>
 				<div class="form-item">
 					<label for="data_termino" class="label-alinhado">Data de término:</label>
 					<input type="date" id="data_termino" name="data_termino" value="<?=isset($data_termino) ? $data_termino : '';?>">
-							<span class="msg-erro" id="msg-data_termino"><?=@$erros['data_termino'];?></span>
+					<span class="msg-erro" id="msg-data_termino"><?=@$erros['data_termino'];?></span>
 				</div>
 				<div class="form-item">
-					<label for="tipo_camp" class="label-alinhado">Tipo de campeonato:
+					<label for="tipo_camp" class="label-alinhado">Tipo de campeonato:<br></label>
 					<select name="tipo_camp">
 							<option value="">--- Selecione o tipo de campeonato ---</option>
 							<option value="1">Mata-mata</option>
 							<option value="2">Pontos corridos</option>
 							<option value="3">Mata-mata e Pontos corridos</option>
 					</select>
-					</label>
 					<span class="msg-erro" id="msg-tipo_camp"><?=@$erros['tipo_camp'];?></span>
 				</div>
-				<br>
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<br>	
-				<div class="botao1">
+				<div class="botao2">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="reset" value="Limpar campos" name="resetar">

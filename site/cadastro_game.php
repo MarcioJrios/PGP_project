@@ -46,7 +46,7 @@ if(isset($_POST['cadastrar'])){
 			<div class="cadastro_game">
 				<?php
 					if(isset($erros['insert'])){
-						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo clientecampeonato!</p>';
+						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo game!</p>';
 					}
 				?>
 				<h2 id="id_cadastro_campeonato">Cadastro de games</h2>
@@ -55,19 +55,18 @@ if(isset($_POST['cadastrar'])){
 					<input type="text" id="nome" name="nome" size="50" placeholder="nome game"value="<?=isset($nome) ? $nome : '';?>">
 					<span class="msg-erro" id="msg-nome_camp"><?=@$erros['nome'];?></span>
 				</div>
-				<br>
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<br>	
 				<div class="botao1">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="reset" value="Limpar campos" name="resetar">
 					</div>
+					<br>
 				</div>
 				<div>
 					<a href="adm.php">Voltar para a pagina de admin</a></p>

@@ -51,17 +51,22 @@ if(isset($_POST['cadastrar'])){
 		}
 	}
 }
-
-
-?>
-<?php
-		if(!(isset($_POST['cadastrar'])) || (isset($erros) && count($erros))){
 ?>
 
 <main>
 	<div class="col-10">
+
+		<?php
+			if(!(isset($_POST['cadastrar'])) || (isset($erros) && count($erros))){
+		?>
+
 		<form action="cadastro_equipe.php" method="post" id="form-contato">
 			<div class="cadastro_equipe">
+				<?php
+					if(isset($erros['insert'])){
+						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> uma nova equipe!</p>';
+					}
+				?>
 				<h2 id="Cad_equipe">Cadastre um time novo:</h2>
 				<div class="form-item">
 					<label for="nome" class="label-alinhado">Nome:</label>
@@ -73,8 +78,8 @@ if(isset($_POST['cadastrar'])){
 					<input type="text" id="sigla" name="sigla" size="10" placeholder="Sigla da Equipe" pattern="[A-Z\0-9]+$" value="<?=isset($sigla) ? $sigla : '';?>">
 					<span class="msg-erro" id="msg-sigla"><?=@$erros['sigla'];?></span>
 				</div>
-				<div>
-					<label for="game" class="label-alinhado">Selecione o game:
+				<div class="form-item">
+					<label for="game" class="label-alinhado">Selecione o game:<br></label>
 					<select name="jogo">
 							<option value="">--- Selecione o Jogo ---</option>
 
@@ -92,14 +97,12 @@ if(isset($_POST['cadastrar'])){
 					</select>
 					<span class="msg-erro" id="msg-jogo"><?=@$erros['jogo'];?></span>
 				</div>
-				<br>
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<br>	
 				<div class="botao1">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
@@ -111,6 +114,7 @@ if(isset($_POST['cadastrar'])){
 				</div>
 			</div>
 		</form>
+
 		<?php
 		}else{
 			echo "<p>Equipe <strong>cadastrado</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";

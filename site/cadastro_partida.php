@@ -49,7 +49,7 @@ if(isset($_POST['cadastrar'])){
 			<div class="cadastro_partida">
 				<?php
 					if(isset($erros['insert'])){
-						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo clientecampeonato!</p>';
+						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> uma nova partida!</p>';
 					}
 				?>
 				<h2 id="id_cadastro_campeonato">Cadastro de partidas oficiais</h2>
@@ -73,12 +73,12 @@ if(isset($_POST['cadastrar'])){
 
 				<div class="form-item">
 					<label for="data_inicio" class="label-alinhado">Horário de início:</label>
-					<input type="datetime" id="data_inicio" name="data_inicio" placeholder="yyyy-mm-dd hh:mm" value="<?=isset($data_inicio) ? $data_inicio : '';?>">
+					<input type="date" id="data_inicio" name="data_inicio" placeholder="yyyy-mm-dd hh:mm" value="<?=isset($data_inicio) ? $data_inicio : '';?>">
 					<span class="msg-erro" id="msg-data_inicio"><?=@$erros['data_inicio'];?></span>
 				</div>
 				<div class="form-item">
 					<label for="data_termino" class="label-alinhado">Horário de término:</label>
-					<input type="datetime" id="data_termino" name="data_termino" placeholder="yyyy-mm-dd hh:mm" value="<?=isset($data_termino) ? $data_termino : '';?>">
+					<input type="date" id="data_termino" name="data_termino" placeholder="yyyy-mm-dd hh:mm" value="<?=isset($data_termino) ? $data_termino : '';?>">
 					<span class="msg-erro" id="msg-data_termino"><?=@$erros['data_termino'];?></span>
 				</div>
 
@@ -122,7 +122,6 @@ if(isset($_POST['cadastrar'])){
 						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<br>	
 				<div class="botao1">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
