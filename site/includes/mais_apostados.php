@@ -2,11 +2,11 @@
 	<!-- container de mais pedidos -->
 	<div class="lista-partidas">
 	<?php
-	include_once "includes/conexao.php";
+	include_once "conexao.php";
 	//include_once "includes/functions.php";
 	$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partida.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
-	$resultado = mysqli_query($conexao, $sql);
-	foreach($resultado as $categoria=>$item){
+	$res = mysqli_query($conexao, $sql);
+	while ($resultado = mysqli_fetch_array($res)){
         #$partida = mysqli_fetch_array($res);
         // busca os detalhes de cada um dos 3 mais pedidos
 
