@@ -10,6 +10,8 @@
 	}
 ?>
 
+<link href="css/adm.css" rel="stylesheet" type="text/css">
+
 <div class='menu_adm'>
 	<div class='item'>
 	<a href="cadastro_equipe.php">Cadastrar Equipe</a>
@@ -27,3 +29,5 @@
 	<a href="atualiza_partida.php">Atualiza Resultados</a>
 	</div>
 </div>	
+
+
