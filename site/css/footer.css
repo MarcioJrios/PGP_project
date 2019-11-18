@@ -9,80 +9,12 @@ a {
 }
 
 body{
-	padding: 0;
+	padding: 5;
 	margin: 0;
 }
 
-header {
+footer {
 	background-color: white;
 	width: 100%;
-	height: 120px;
-}
-
-.usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class{
-	float: left;
-}
-
-.divisao-header-class, .col-10 {
-	clear: left;
-}
-
-.usuario-class{
-	display: flex;
-	justify-content: center;
-	width: 10%;
-}
-.usuario-class img{
-	height: 120px;
-}
-
-.logo-class{
-	display: flex;
-	justify-content: center;
-	width: 65%;
-}
-
-.sair-class {
-	padding-right: 0;
-}
-
-.logo-class img{
-	height: 110px;
-}
-
-.login-class{
-	width: 25%;
-}
-
-.login-class p{
-	padding-top: 7px;
-}
-
-.login-class img{
-	padding-top: 15px;
-	padding-right: 15px;
-	float: right;
-	height: 105px;
-}
-
-.divisao-header-class {
-	width: 100%;
-	height: 1px;
-	background-color: rgb(68, 15, 15);
-}
-
-.col-10{
-	width: 100%;
-}
-
-#logado {
-	color: green;
-}
-
-#saldo {
-	color: blue;
-}
-
-#logar {
-	color: red;
+	height: 100%;
 }
