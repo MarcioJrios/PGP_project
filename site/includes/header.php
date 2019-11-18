@@ -6,7 +6,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-	<title>Site Aposta</title>
+	<title>Pila Bet - O site perfeito para fazer suas apostas</title>
+	<link href="imagens/Icone.png" rel="shortcut icon" type="image/x-png">
 	<link href="css/header.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Scada|Noto+Sans" rel="stylesheet">
 </head>
