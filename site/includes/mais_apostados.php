@@ -42,7 +42,7 @@
 				</a>
 			</div>
         
-        <h3>VS<h3>
+        <h3>VS</h3>
         <?php
 
         #equipe 2
