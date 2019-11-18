@@ -7,7 +7,7 @@ if(isset($_SESSION['tipo_usuario'])){
 		header("Location: includes/header.php");
 	}
 }else{
-	header("Location: ../login.php");
+	header("Location: login.php");
 }
 
 $erros = array();
