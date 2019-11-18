@@ -1,3 +1,15 @@
+<?php
+include "header.php";
+
+if(isset($_SESSION['tipo_usuario'])){
+	if($_SESSION['tipo_usuario']==1){
+		header("Location: ../index.php");
+	}
+}else{
+	header("Location: ../login.php");
+}
+?>
+
 <div class='menu_adm'>
 	<div class='item'>
 	<a href="cadastro_equipe.php">Cadastrar Equipe</a>

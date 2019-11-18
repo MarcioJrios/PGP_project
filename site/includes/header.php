@@ -28,7 +28,7 @@
 		<div class="login-class">
 		<?php
 			if(isset($_SESSION["email"]) && isset($_SESSION["nome"])){?>
-				<a href="sair.php">
+				<a href="includes/sair.php">
 				<img src="imagens/sair.png" alt="sair">
 				<figcaption></figcaption>
 				</a>

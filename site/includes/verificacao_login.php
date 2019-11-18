@@ -40,7 +40,10 @@
 						$_SESSION['nome'] = $logins['nome'];
 						$_SESSION['saldo'] = $logins['saldo'];
 						$_SESSION['tipo_usuario'] = $logins['tipo_usuario'];
-						header("Location: header.php");	//redireciona para a pagina inicial
+						if($_SESSION['tipo_usuario']==0)
+							header("Location: ../adm.php");	
+						else
+							header("Location: ../index.php"); //redireciona para a pagina inicial
 					}
 				}
 			}else{
