@@ -4,7 +4,7 @@
 	<?php
 	include_once "conexao.php";
 	//include_once "includes/functions.php";
-	$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partida.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
+	$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
 	$res = mysqli_query($conexao, $sql);
 	while ($resultado = mysqli_fetch_array($res)){
         #$partida = mysqli_fetch_array($res);
@@ -13,7 +13,8 @@
         ?>
         <div class="partida">
         <?php
-		$sql = " select * from partidas WHERE id_partida = $categoria";
+		$partida = $resultado['id_partida'];
+		$sql = " select * from partidas WHERE id_partida = $partida";
 		$res = mysqli_query($conexao, $sql);
         $partida = mysqli_fetch_array($res);
 
@@ -33,7 +34,6 @@
         $equipe1 = mysqli_fetch_array($equipe1);
 		?>
 			<div class="equipe1">
-				<a href="partida.php?id_partida=<?=$partida['id_partida'];?>">
 					<figure>
 						<figcaption>
                         <?=$equipe1['sigla'];?>
@@ -52,7 +52,6 @@
         $equipe2 = mysqli_fetch_array($equipe2);
 		?>
 			<div class="equipe2">
-				<a href="partida.php?id_partida=<?=$partida['id_partida'];?>">
 					<figure>
 						<figcaption>
                         <?=$equipe2['sigla'];?>
