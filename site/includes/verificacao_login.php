@@ -4,7 +4,7 @@
 	$email = $_POST['email'];
 	$senha = md5($_POST['senha']);
 
-	$statement = $conexao->prepare("select email, senha, nome, saldo from usuarios where email = ?");
+	$statement = $conexao->prepare("select email, senha, nome, saldo, tipo_usuario from usuarios where email = ?");
 	$statement->bind_param("s", $email);
 	$statement->execute();
 	$result = $statement->get_result();
@@ -39,6 +39,7 @@
 						$_SESSION['senha'] = $logins['senha'];
 						$_SESSION['nome'] = $logins['nome'];
 						$_SESSION['saldo'] = $logins['saldo'];
+						$_SESSION['tipo_usuario'] = $logins['tipo_usuario'];
 						header("Location: header.php");	//redireciona para a pagina inicial
 					}
 				}
