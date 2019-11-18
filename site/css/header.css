@@ -5,7 +5,8 @@
 
 a {
 	text-decoration: none;
-	color: #002a32;
+	color: #e4a404;
+	font-weight: bold;
 }
 
 body{
@@ -28,24 +29,42 @@ footer {
 	width: 100%;
 }
 
-footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class, .divisao-footer-class{
+.footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class, .divisao-footer-class, .botao, .botao1{
 	float: left;
 }
 
-footer, .divisao-header-class, .divisao-footer-class, .col-10 {
+.footer, .divisao-header-class, .divisao-footer-class, .col-10, .botao {
 	clear: left;
 }
+
+.col-10 {
+	background-color: lightblue;
+	width: 100%;
+	color: black;
+	clear: left;
+	width: 100%;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.col-10 ::placeholder{
+	font-style: italic;
+	font-size: 15px;
+}	
 
 .usuario-class{
 	display: flex;
 	justify-content: center;
 	width: 10%;
 }
+
 .usuario-class img{
 	height: 120px;
 }
 
 .logo-class{
+	padding-left: 15%;;
 	display: flex;
 	justify-content: center;
 	width: 65%;
@@ -87,10 +106,6 @@ footer, .divisao-header-class, .divisao-footer-class, .col-10 {
 	background-color: rgb(68, 15, 15);
 }
 
-.col-10{
-	width: 100%;
-}
-
 #logado {
 	color: green;
 }
@@ -101,4 +116,65 @@ footer, .divisao-header-class, .divisao-footer-class, .col-10 {
 
 #logar {
 	color: red;
+}
+
+.form-item {
+	text-align: center;
+}
+
+.form-item input {
+	text-align: center;
+}
+
+.msg-erro {
+	font-family: 'Scada', sans-serif;
+	color: red;
+	font-size: 0.8em;
+	font-weight: bold;
+	font-style: italic;
+	text-align: center;
+	width: 100%;
+	height: 20px;
+	display: block;
+	margin-bottom: 20px;
+}
+
+.label-alinhado {
+	display: block;
+	text-align: center;
+}
+
+input, option, select {
+	text-align: center;
+	text-align-last: center;
+	border: 2px solid #002a32;
+	padding: 3px;
+	color: black;
+	height: 35px;
+	width: 320px;
+	font-family: 'Scada', sans-serif;
+}
+
+input[type="submit"], input[type="reset"] {
+	background-color: #002a32;
+	text-align: center;
+	color: white;
+	padding: 3px 20px;
+	border: 3px solid white;
+	height: 35px;
+	width: 150px;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover, #buscar:hover {
+	box-shadow: 2px 2px 2px #000;
+}
+
+.botao, .botao1 {
+	width: 50%;
+	display: flex;
+}
+
+.botao1 {
+	padding-left: 10px;
 }
