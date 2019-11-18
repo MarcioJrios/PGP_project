@@ -19,11 +19,20 @@ header {
 	height: 120px;
 }
 
-.usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class{
+footer {
+	background-color: #002a32;
+	color: white;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	width: 100%;
+}
+
+footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class{
 	float: left;
 }
 
-.divisao-header-class, .col-10 {
+footer, .divisao-header-class, .col-10 {
 	clear: left;
 }
 
