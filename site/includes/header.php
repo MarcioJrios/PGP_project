@@ -9,7 +9,6 @@
 	<title>Site Aposta</title>
 	<link href="css/header.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Scada|Noto+Sans" rel="stylesheet">
-	<link href="css/footer.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<!-- cabeçalho -->
