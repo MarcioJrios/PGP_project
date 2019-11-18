@@ -2,8 +2,13 @@
 include "includes/conexao.php";
 include "includes/header.php";
 
-if(!(isset($_SESSION['email'])))
+if(isset($_SESSION['tipo_usuario'])){
+	if($_SESSION['tipo_usuario']=='1'){
+		header("Location: includes/header.php");
+	}
+}else{
 	header("Location: login.php");
+}
 
 $erros = array();
 
