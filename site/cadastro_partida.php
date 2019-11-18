@@ -115,11 +115,6 @@ if(isset($_POST['cadastrar'])){
 					</label>
 					<span class="msg-erro" id="msg-equipe2"><?=@$erros['equipe2'];?></span>
 				</div>
-				<div>
-				<p><a href="cadastro_campeonato.php">Cadastrar campeonato</a><br>
-				<a href="cadastro_equipe.php">Cadastrar equipes</a><br>
-				<a href="page_admin.php">Voltar para a pagina do admin</a></p>
-				</div>
 				<br>
 				<div class="botao">
 					<div class="form-item">
@@ -134,13 +129,20 @@ if(isset($_POST['cadastrar'])){
 						<input type="reset" value="Limpar campos" name="resetar">
 					</div>
 				</div>
+				<div>
+					<a href="adm.php">Voltar para a pagina de admin</a></p>
+				</div>
 			</div>
 		</form>
 
 		<?php
 		}else{
-			echo "<p>Campeonato <strong>cadastrado</strong> com sucesso!</p>";
+			echo "<p>Campeonato <strong>cadastrado</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
 		}
 		?>
 	</div>
 </main>
+
+<?php
+include "includes/footer.php";
+?>

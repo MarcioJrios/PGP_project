@@ -21,8 +21,8 @@ if(isset($_POST['cadastrar'])){
 
 	if(empty($nome)) 
 		$erros['nome'] = 'Digite seu nome completo';
-	if(strlen($sigla) < 3 || strlen($sigla) > 3)
-		$erros['sigla'] = "Tamanho incorreto! apenas 3 digitos";
+	if(strlen($sigla) != 3)
+		$erros['sigla'] = "Número de caracteres inválidos (3 caracteres)";
 	if(empty($jogo))
 		$erros['jogo'] = "Informe um Jogo para a equipe participar";
 
@@ -61,7 +61,7 @@ if(isset($_POST['cadastrar'])){
 <main>
 	<div class="col-10">
 		<form action="cadastro_equipe.php" method="post" id="form-contato">
-			<div class="signup">
+			<div class="cadastro_equipe">
 				<h2 id="Cad_equipe">Cadastre um time novo:</h2>
 				<div class="form-item">
 					<label for="nome" class="label-alinhado">Nome:</label>
@@ -73,43 +73,52 @@ if(isset($_POST['cadastrar'])){
 					<input type="text" id="sigla" name="sigla" size="10" placeholder="Sigla da Equipe" pattern="[A-Z\0-9]+$" value="<?=isset($sigla) ? $sigla : '';?>">
 					<span class="msg-erro" id="msg-sigla"><?=@$erros['sigla'];?></span>
 				</div>
-				</div>
-				<select name="jogo">
-						<option value="">--- Selecione o Jogo ---</option>
+				<div>
+					<label for="game" class="label-alinhado">Selecione o game:
+					<select name="jogo">
+							<option value="">--- Selecione o Jogo ---</option>
 
-					<?php
-					$statement = $conexao->prepare("select id_game, nome from games");
-					$statement->execute();
-					$assoc = $statement->get_result();
-					while ($opt = $assoc->fetch_assoc()){
+						<?php
+						$statement = $conexao->prepare("select id_game, nome from games");
+						$statement->execute();
+						$assoc = $statement->get_result();
+						while ($opt = $assoc->fetch_assoc()){
 
-						echo '<option value="'.$opt['id_game'].'">'.$opt['nome'].'</option>';
+							echo '<option value="'.$opt['id_game'].'">'.$opt['nome'].'</option>';
 
-					}
-					
-					?>
-				</select>
-				<span class="msg-erro" id="msg-jogo"><?=@$erros['jogo'];?></span>
+						}
+						
+						?>
+					</select>
+					<span class="msg-erro" id="msg-jogo"><?=@$erros['jogo'];?></span>
 				</div>
 				<br>
 				<div class="botao">
-					<label class="label-alinhado"></label>
-					<input type="button" id="cancelar" value="Cancelar" name="cacelar">
-				</div>
-                <br>
-                <div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
-						<input type="submit" id="cadastrar" value="Cadastrar" name="cadastrar">
+						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<span class="msg-erro" id="msg-equipe"><?=@$erros['equipe'];?></span>
+				<br>	
+				<div class="botao1">
+					<div class="form-item">
+						<label class="label-alinhado"></label>
+						<input type="reset" value="Limpar campos" name="resetar">
+					</div>
+				</div>
+				<div>
+					<a href="adm.php">Voltar para a pagina de admin</a></p>
+				</div>
 			</div>
 		</form>
 		<?php
 		}else{
-			echo "<p>Equipe <strong>cadastrado</strong> com sucesso!</p>";
+			echo "<p>Equipe <strong>cadastrado</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
 
 		}?>
 	</div>
 </main>
+
+<?php
+include "includes/footer.php";
+?>
