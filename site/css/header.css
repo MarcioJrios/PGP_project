@@ -28,11 +28,11 @@ footer {
 	width: 100%;
 }
 
-footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class{
+footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class, .divisao-footer-class{
 	float: left;
 }
 
-footer, .divisao-header-class, .col-10 {
+footer, .divisao-header-class, .divisao-footer-class, .col-10 {
 	clear: left;
 }
 
@@ -74,9 +74,16 @@ footer, .divisao-header-class, .col-10 {
 	height: 105px;
 }
 
-.divisao-header-class {
+.divisao-header-class, .divisao-footer-class{
 	width: 100%;
-	height: 1px;
+	height: 2px;
+}
+
+.divisao-footer-class {
+	background-color: black;
+}
+
+.divisao-header-class {
 	background-color: rgb(68, 15, 15);
 }
 
