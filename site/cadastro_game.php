@@ -10,6 +10,8 @@ if(isset($_SESSION['tipo_usuario'])){
 	header("Location: login.php");
 }
 
+include "includes/adm.php";
+
 $erros = array();
 
 if(isset($_POST['cadastrar'])){
