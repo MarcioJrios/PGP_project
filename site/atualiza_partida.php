@@ -11,28 +11,35 @@ if(isset($_SESSION['tipo_usuario'])){
 }
 
 include "includes/adm.php";
-$id_partida = $_GET['partida'];
 
+$id_partida = isset($_GET['partida']) ? $_GET['partida'] : '';
 $erros = array();
 
 if(isset($_POST['cadastrar'])){
 	$equipe1 = $_POST['equipe1'];
 	$equipe2 = $_POST['equipe2'];
-	$partida = $_POST['partida'];;
-	print_r($equipe1);
-	print_r($equipe2);
-	echo 'partida: '.$partida.'poha';
+	$partida = $_POST['id_partida'];
 
 	$statement = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where partidas.id_partida = ? ;");
-	$statement->bind_param("iii", $equipe1, $equipe2,$partida);
+	$statement->bind_param("iii", $equipe1, $equipe2,$id_partida);
 	$statement->execute();
 }
 ?>
 
 <main>
 	<div class="col-10">
+
+		<?php
+		if(!(isset($_POST['cadastrar'])) || (isset($erros) && count($erros))){
+		?>
+
 		<form action="atualiza_partida.php" method="POST" id="form-contato">
 			<div class="Partidas">
+				<?php
+					if(isset($erros['insert'])){
+						echo '<p style="text-align: center; color: red;">Erro ao <strong>atualizar</strong> partida!</p>';
+					}
+				?>
 			<h2>Jogos Disponíveis</h2>
 			<?php 
 				$sql = "select id_partida,id_equipe1,id_equipe2 from partidas WHERE id_partida = $id_partida";
@@ -67,7 +74,7 @@ if(isset($_POST['cadastrar'])){
 
 				<?php	
 				?>
-				<input type="hidden" id="partida" name="partida" value="<?=isset($partida) ? $partida : '';?>">
+				<input type="hidden" id="id_partida" name="id_partida" value="<?=isset($id_partida) ? $id_partida : '';?>">
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
@@ -82,6 +89,12 @@ if(isset($_POST['cadastrar'])){
 				</div>
 			</div>
 		</form>
+
+		<?php
+		}else{
+			echo "<p>Partida <strong>atualizada</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
+		}
+		?>
 	</div>
 </main>
 
