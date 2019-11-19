@@ -111,9 +111,6 @@ if(isset($_POST['cadastrar'])){
 						<input type="reset" value="Limpar campos" name="resetar">
 					</div>
 				</div>
-				<div>
-					<a href="adm.php">Voltar para a pagina de admin</a></p>
-				</div>
 			</div>
 		</form>
 
