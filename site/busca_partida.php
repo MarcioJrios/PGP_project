@@ -3,7 +3,6 @@
 include "includes/conexao.php";
 include "includes/header.php";
 
-
 ?>
 <form action="atualiza_partida.php" method="GET" id="form-contato">
     <label for="game" class="label-alinhado">Game:
@@ -36,7 +35,7 @@ include "includes/header.php";
     <div class="botao">
 		<div class="form-item">
 			<label class="label-alinhado"></label>
-				<input type="submit" id="botao" value="Cadastrar">
+			<input type="submit" id="botao" value="Confirmar">
 		</div>
 	</div>
 </form>    
