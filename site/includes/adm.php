@@ -17,12 +17,12 @@ if(isset($_SESSION['tipo_usuario'])){
 	<a href="cadastro_campeonato.php">Cadastrar Campeonato</a>
 	</div>
 	<div class='item'>
-	<a href="cadastro_partida.php">Cadastrar Partidas</a>
+	<a href="cadastro_partida.php">Cadastrar Partida</a>
 	</div>
 	<div class='item'>
-	<a href="cadastro_game.php">Cadastrar Games</a>
+	<a href="cadastro_game.php">Cadastrar Game</a>
 	</div>
 	<div class='item'>
-	<a href="atualiza_partida.php">Atualiza Resultados</a>
+	<a href="busca_partida.php">Atualizar Resultado</a>
 	</div>
 </div>
