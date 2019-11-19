@@ -191,7 +191,7 @@ input[type="submit"]:hover, input[type="reset"]:hover, #buscar:hover {
 }
 
 .item {
-    border-bottom: 4px solid #222222;
+    border-bottom: 3px solid #222222;
     margin-right: 30px;
 }
 .adm{
