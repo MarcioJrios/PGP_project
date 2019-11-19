@@ -11,6 +11,7 @@ if(isset($_SESSION['tipo_usuario'])){
 }
 
 include "includes/adm.php";
+$id_partida = $_GET['partida'];
 
 $erros = array();
 
@@ -32,10 +33,6 @@ if(isset($_POST['cadastrar'])){
 	<div class="col-10">
 		<form action="atualiza_partida.php" method="POST" id="form-contato">
 			<div class="Partidas">
-			<?php
-			if(isset($erros['insert'])){
-				echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> uma nova equipe!</p>';
-			?>
 			<h2>Jogos Disponíveis</h2>
 			<?php 
 				$sql = "select id_partida,id_equipe1,id_equipe2 from partidas WHERE id_partida = $id_partida";
@@ -48,43 +45,43 @@ if(isset($_POST['cadastrar'])){
 				$equipe1 = mysqli_query($conexao, $sql);
 				$equipe1 = mysqli_fetch_array($equipe1);
 				?>
-				<div class="partida">
-					<div class="equipe1">
-							<?= '<p><input type="number" name="equipe1" value='.$res['id_partida'].'> '.$equipe1['sigla'].'</p>';?>
-					</div>
-		
-					<h3>VS</h3>
-					<?php
+				<div class="form-item">
+					<label for="equipe1" class="label-alinhado">Resultado da equipe 1 (<?=$equipe1['sigla']?>):</label>
+					<?='<input type="number" name="equipe1" value='.$res['id_partida'].'>';?>
+					<span class="msg-erro" id="msg-equipe1"><?=@$erros['equipe1'];?></span>
+				</div>
+				<h3>VS</h3>
 
-					#equipe 2
-					$equipe2 = $res['id_equipe2'];
-					$sql = " select * from equipes WHERE id_equipe = $equipe2";
-					$equipe2 = mysqli_query($conexao, $sql);
-					$equipe2 = mysqli_fetch_array($equipe2);
-					?>
-						
-						<div class="equipe2">
-							<?= '<p><input type="number" name="equipe2" value='.$res['id_partida'].'> '.$equipe2['sigla'].'</p>';?>
-							
-						</div>
-					</div>  <!--Div de partida-->
-					<?php	
+				<?php
+				#equipe 2
+				$equipe2 = $res['id_equipe2'];
+				$sql = " select * from equipes WHERE id_equipe = $equipe2";
+				$equipe2 = mysqli_query($conexao, $sql);
+				$equipe2 = mysqli_fetch_array($equipe2);
 				?>
-				<!-- <input type="hidden" id="partida" name="partida" value="<?=isset($partida) ? $partida : '';?>"> -->
+				<div class="form-item">
+					<label for="equipe2" class="label-alinhado">Resultado da equipe 2 (<?=$equipe2['sigla']?>):</label>
+					<?='<input type="number" name="equipe2" value='.$res['id_partida'].'>';?>
+					<span class="msg-erro" id="msg-equipe2"><?=@$erros['equipe2'];?></span>
+				</div>
+
+				<?php	
+				?>
+				<input type="hidden" id="partida" name="partida" value="<?=isset($partida) ? $partida : '';?>">
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
-						<input type="submit" id="botao" value="cadastrar" name="cadastrar">
+						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
+					</div>
+				</div>
+				<div class="botao1">
+					<div class="form-item">
+						<label class="label-alinhado"></label>
+						<input type="reset" value="Limpar campos" name="resetar">
 					</div>
 				</div>
 			</div>
 		</form>
-
-		<?php
-		}else{
-			echo "<p>Partida <strong>atualizada</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
-		}
-		?>
 	</div>
 </main>
 
