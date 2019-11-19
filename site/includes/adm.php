@@ -1,5 +1,4 @@
 <?php
-include "header.php";
 
 if(isset($_SESSION['tipo_usuario'])){
 	if($_SESSION['tipo_usuario']==1){
