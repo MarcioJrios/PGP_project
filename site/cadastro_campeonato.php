@@ -165,7 +165,7 @@ if(isset($_POST['cadastrar'])){
 						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
 					</div>
 				</div>
-				<div class="botao2">
+				<div class="botao1">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
 						<input type="reset" value="Limpar campos" name="resetar">
