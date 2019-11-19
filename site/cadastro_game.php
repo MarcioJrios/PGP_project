@@ -70,9 +70,6 @@ if(isset($_POST['cadastrar'])){
 					</div>
 					<br>
 				</div>
-				<div>
-					<a href="adm.php">Voltar para a pagina de admin</a></p>
-				</div>
 			</div>
 		</form>
 
