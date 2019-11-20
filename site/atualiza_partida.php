@@ -20,7 +20,7 @@ if(isset($_POST['cadastrar'])){
 	$equipe2 = $_POST['equipe2'];
 	$partida = $_POST['id_partida'];
 
-	$statement = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where partidas.id_partida = ? ;");
+	$statement = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where id_partida = ? ;");
 	$statement->bind_param("iii", $equipe1, $equipe2,$partida);
 	$statement->execute();
 }

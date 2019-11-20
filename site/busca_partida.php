@@ -24,11 +24,18 @@ include "includes/adm.php";
 						<option value="">--- Selecione a partida ---</option>
 
 					<?php
-					$statement = $conexao->prepare("select id_partida,id_equipe1,id_equipe2 from partidas WHERE pontos_equipe1 is NULL and pontos_equipe2 is NULL");
+					$statement = $conexao->prepare("select id_camp,id_partida,id_equipe1,id_equipe2 from partidas WHERE pontos_equipe1 is NULL and pontos_equipe2 is NULL");
 					$statement->execute();
 					$res = $statement->get_result();
+					
+
 					while ($lista = $res->fetch_assoc()){
 						
+						$id_camp = $lista['id_camp'];
+						$sql = " select sigla from campeonatos WHERE id_camp = $id_camp";
+						$sigla = mysqli_query($conexao, $sql);
+						$sigla = mysqli_fetch_array($sigla);
+
 						$equipe1 = $lista['id_equipe1'];
 						$sql = " select * from equipes WHERE id_equipe = $equipe1";
 						$equipe1 = mysqli_query($conexao, $sql);
@@ -39,7 +46,7 @@ include "includes/adm.php";
 						$equipe2 = mysqli_query($conexao, $sql);
 						$equipe2 = mysqli_fetch_array($equipe2);
 
-						echo '<option value="'.$lista['id_partida'].'">'.$equipe1['sigla'].' vs '.$equipe2['sigla'].'</option>';
+						echo '<option value="'.$lista['id_partida'].'">'.$equipe1['sigla'].' vs '.$equipe2['sigla'].' ('.$sigla['sigla'].')</option>';
 					}
 					?>
 					</select>
