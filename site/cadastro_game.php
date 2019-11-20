@@ -19,7 +19,6 @@ if(isset($_POST['cadastrar'])){
 
 	if(empty($nome))
 		$erros['nome'] = "Digite um nome de game";
-
 	if(!count($erros)){
 		$statement = $conexao->prepare("select nome from games where nome = ?");
 		$statement->bind_param("s", $nome);
@@ -75,7 +74,7 @@ if(isset($_POST['cadastrar'])){
 
 		<?php
 		}else{
-			echo "<p>Campeonato <strong>cadastrado</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
+			echo "<p>Game <strong>cadastrado</strong> com sucesso! <a href='adm.php'>Clique para voltar a tela de administrador</a></p>";
 		}
 		?>
 	</div>

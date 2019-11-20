@@ -92,7 +92,7 @@ if(isset($_POST['cadastrar'])){
 						echo '<p style="text-align: center; color: red;">Erro ao <strong>cadastrar</strong> um novo campeonato!</p>';
 					}
 				?>
-				<h2 id="id_cadastro_campeonato">Cadastro de campeonato oficial</h2>
+				<h2 id="id_cadastro_campeonato">Cadastro de campeonato</h2>
 				<div class="form-item">
 					<label for="nome" class="label-alinhado">Nome do campeonato:</label>
 					<input type="text" id="nome" name="nome" size="50" placeholder="nome campeonato"value="<?=isset($nome) ? $nome : '';?>">
@@ -121,7 +121,7 @@ if(isset($_POST['cadastrar'])){
 					<span class="msg-erro" id="msg-game"><?=@$erros['tipo_game'];?></span>
 				</div>
 				<div class="form-item">
-					<label for='equipe' class="label-alinhado">Selecione as equipes do campeonato:<br></label>
+					<label for='equipe' class="label-alinhado_except">Selecione as equipes do campeonato:<br></label>
 					<?php
 						$statement = $conexao->prepare("select id_equipe, id_game, nome from equipes");
 						$statement->execute();

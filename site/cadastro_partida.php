@@ -56,7 +56,7 @@ if(isset($_POST['cadastrar'])){
 				?>
 				<h2 id="id_cadastro_campeonato">Cadastro de partidas oficiais</h2>
 
-				<div>
+				<div class="form-item">
 					<label for="id_camp" class="label-alinhado">Campeonato:</label>
 					<select name="id_camp">
 						<option value="">---- Selecione o campeonato ----</option>
@@ -84,7 +84,7 @@ if(isset($_POST['cadastrar'])){
 					<span class="msg-erro" id="msg-data_termino"><?=@$erros['data_termino'];?></span>
 				</div>
 
-				<div>
+				<div class="form-item">
 					<label for="equipe1" class="label-alinhado">Equipe 1:</label>
 					<select name="equipe1">
 						<option value="">-- Selecione a primeira equipe --</option>
@@ -101,7 +101,7 @@ if(isset($_POST['cadastrar'])){
 					<span class="msg-erro" id="msg-equipe1"><?=@$erros['equipe1'];?></span>
 				</div>
 				
-				<div>
+				<div class="form-item">
 					<label for="equipe2" class="label-alinhado">Equipe 2:</label>
 					<select name="equipe2">
 						<option value="">-- Selecione a segunda equipe --</option>
@@ -117,7 +117,6 @@ if(isset($_POST['cadastrar'])){
 					</label>
 					<span class="msg-erro" id="msg-equipe2"><?=@$erros['equipe2'];?></span>
 				</div>
-				<br>
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
