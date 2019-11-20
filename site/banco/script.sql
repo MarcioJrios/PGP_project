@@ -39,7 +39,7 @@ CREATE TABLE campeonatos (
     id_camp INTEGER auto_increment,
     tipo_camp INTEGER not null,
     nome varchar(100) not null,
-    sigla varchar(3) not null,
+    sigla varchar(6) not null,
     horario_inicio timestamp not null,
     horario_termino timestamp not null,
 	constraint campeonatos primary key(id_camp)
@@ -129,10 +129,15 @@ FOR EACH ROW
 SET NEW.data_cadastro = CURRENT_TIMESTAMP;
 
 insert into usuarios (nome, nickname, email, data_nasc, sexo, senha, tipo_usuario) values
-("Admin001","admin001","admin@gmail.com","1999-01-01","m","ff1343e9e5114231f12f7688ccf452ae",0);
+("Admin001","admin001","admin@gmail.com","1999-01-01","m","ff1343e9e5114231f12f7688ccf452ae",0),
+("teste00","teste00","teste00@gmail.com","1999-01-01","m","d6a705d3fc542ded7c761528e54b3048",0),
+("teste01","teste01","teste01@gmail.com","1999-01-01","m","0102e9826d6e14ee5e167f18159aa728",1);
 
 insert into games (nome) values 
 ("League of Legends"),
 ("Counter-Strike: Global Offensive"),
 ("Dota 2"),
 ("Tom Clancy's Rainbow Six Siege");
+
+insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino) values 
+(3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-10","2019-11-11");
