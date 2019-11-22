@@ -1,6 +1,7 @@
 <?php
 include "includes/conexao.php";
 include "includes/header.php";
+include "includes/adm.php";
 
 if(isset($_SESSION['tipo_usuario'])){
 	if($_SESSION['tipo_usuario']=='1'){
@@ -9,8 +10,6 @@ if(isset($_SESSION['tipo_usuario'])){
 }else{
 	header("Location: login.php");
 }
-
-include "includes/adm.php";
 
 ?>
 <main>
