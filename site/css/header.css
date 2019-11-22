@@ -1,12 +1,12 @@
 * {
 	box-sizing: border-box;
-	font-family: 'Noto Sans', sans-serif;
+	font-family: 'Scada', sans-serif;
 }
 
 a {
 	text-decoration: none;
 	color: #f5b616;
-	font-weight: bold;
+	font-size: 1.03em;
 }
 
 body {
@@ -27,13 +27,14 @@ footer {
 	justify-content: center;
 	text-align: center;
 	width: 100%;
+	font-size: 1.03em;
 }
 
-.footer, .usuario-class, .logo-class, .login-class, .col-10, .divisao-header-class, .divisao-footer-class, .botao, .botao1{
+.footer, .usuario-class, .logo-class, .login-class, .col-10, .botao, .botao1{
 	float: left;
 }
 
-.footer, .divisao-header-class, .divisao-footer-class, .col-10, .botao {
+.footer, .col-10, .botao {
 	clear: left;
 }
 
@@ -90,20 +91,11 @@ footer {
 	padding-top: 15px;
 	padding-right: 15px;
 	float: right;
-	height: 105px;
+	height: 100px;
 }
 
-.divisao-header-class, .divisao-footer-class{
-	width: 100%;
-	height: 2px;
-}
-
-.divisao-footer-class {
-	background-color: black;
-}
-
-.divisao-header-class {
-	background-color: rgb(68, 15, 15);
+.login-class img:hover{
+	transform: scale(1.2);
 }
 
 #logado {
@@ -184,8 +176,8 @@ input[type="submit"]:hover, input[type="reset"]:hover, #buscar:hover {
 
 .menu_adm {
     background-color: #f0f3f0; 
-    border-radius: 4px;  
-    border: 4px solid #222222;
+    border-radius: 0px;  
+    border: 5px solid #002a32;
     padding: 15px;
     display: flex;
     flex-direction: row;
