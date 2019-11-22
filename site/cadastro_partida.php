@@ -26,14 +26,15 @@ if(isset($_POST['cadastrar'])){
 		$erros['data_inicio'] = "Informe uma data de inicio";
 	if(empty($data_termino))
 		$erros['data_termino'] = "Informe uma data de termino";
-	if(empty(equipe1))
+	if(empty($equipe1))
 		$erros['equipe1'] = "Selecione a primeira equipe";
 	if(empty($equipe2))
 		$erros['equipe2'] = "Selecione a segunda equipe";
 	else{
 		if($equipe1 == $equipe2)
 			$erros['equipe2'] = "As equipes nao podem ser iguais";
-
+	}
+	
 	if(!count($erros)){
 		$statement = $conexao->prepare("INSERT INTO partidas(horario_inicio, horario_termino, id_equipe1, id_equipe2, id_camp) VALUES (?, ?, ?, ?, ?)");
 		$statement->bind_param("ssiii", $data_inicio, $data_termino, $equipe1, $equipe2, $id_camp);
