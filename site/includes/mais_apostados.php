@@ -4,12 +4,15 @@
 	<?php
 	include_once "conexao.php";
 	//include_once "includes/functions.php";
-	$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
-	$res = mysqli_query($conexao, $sql);
-	while ($resultado = mysqli_fetch_array($res)){
+	//$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
+	//$res = mysqli_query($conexao, $sql);
+	//$result = mysqli_fetch_array($res);
+	$statement = $conexao->prepare("select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10");
+	$statement->execute();
+	$assoc = $statement->get_result();
+	while ($resultado = $assoc->fetch_assoc()){
         #$partida = mysqli_fetch_array($res);
         // busca os detalhes de cada um dos 3 mais pedidos
-
         ?>
         <div class="partida">
         <?php
@@ -23,7 +26,7 @@
 		$camp = mysqli_query($conexao, $sql);
         $camp = mysqli_fetch_array($res);
         ?>
-        <h4><?=$camp['sigla'];?><h4>
+        <h4><?=$camp['sigla'];?></h4>
         <?php
         
         

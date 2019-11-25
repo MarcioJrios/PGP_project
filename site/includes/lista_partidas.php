@@ -10,7 +10,7 @@ include "conexao.php";
     	$assoc = $statement->get_result();
 	    while ($resultado = $assoc->fetch_assoc()){
         // busca os detalhes de cada um dos 3 mais pedidos
-        print_r($resultado);
+
         ?>
         <div class="partida">
         <?php
