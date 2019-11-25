@@ -30,6 +30,11 @@ if(isset($_POST['cadastrar'])){
 		$statement = $conexao->prepare("INSERT INTO apostas(valor, email, id_partida) VALUES (?, ?, ?)");
 		$statement->bind_param("dsi", $valor, $email, $partida);
 		$statement->execute();
+		
+		$saldo = $_SESSION['saldo'] - $valor;
+		$statement = $conexao->prepare("UPDATE usuarios SET saldo = ? where email = ?;");
+		$statement->bind_param("ds", $saldo, $_SESSION['email']);
+		$statement->execute();
 	}
 }
 ?>
@@ -56,12 +61,12 @@ if(isset($_POST['cadastrar'])){
 				$res = $res->fetch_assoc();
 				
 				$equipe1 = $res['id_equipe1'];
-				$sql = " select nome from equipes WHERE id_equipe = $equipe1";
+				$sql = " select * from equipes WHERE id_equipe = $equipe1";
 				$equipe1 = mysqli_query($conexao, $sql);
 				$equipe1 = mysqli_fetch_array($equipe1);
 
 				$equipe2 = $res['id_equipe2'];
-				$sql = " select nome from equipes WHERE id_equipe = $equipe2";
+				$sql = " select * from equipes WHERE id_equipe = $equipe2";
 				$equipe2 = mysqli_query($conexao, $sql);
 				$equipe2 = mysqli_fetch_array($equipe2);
 				?>
