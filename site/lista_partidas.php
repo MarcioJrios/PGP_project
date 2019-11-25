@@ -5,19 +5,10 @@ include "conexao.php";
 <section>
         <?php
         $idCamp = $_GET['idCamp'];
-        //$sql = " SELECT  * from partidas as a where a.id_camp = $idCamp ;"; 	
-        //$res = mysqli_query($conexao, $sql);
-
         $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
 	    $statement->execute();
     	$assoc = $statement->get_result();
-        //$resultado = mysqli_fetch_array($res);
-        //if(!$resultado){
-        //    echo "<p>Nenhuma partida encontrada!</p>";
-        //}
-        //else{
 	    while ($resultado = $assoc->fetch_assoc()){
-        #$partida = mysqli_fetch_array($res);
         // busca os detalhes de cada um dos 3 mais pedidos
         print_r($resultado);
         ?>
