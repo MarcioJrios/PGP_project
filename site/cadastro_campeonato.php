@@ -21,8 +21,6 @@ if(isset($_POST['cadastrar'])){
 	$sigla = trim($_POST['sigla']);
 	@$equipe = $_POST['equipe'];
 	$game = $_POST['game'];
-	
-	echo 'k'.$nome.'kk'.$data_inicio.'kk'.$data_termino.'kk'.$tipo_camp.'kk'.$sigla.'kk'.$equipe.'kk'.$game.'kk';
 
 	if(empty($nome))
 		$erros['nome'] = "Digite um nome de campeonato";
