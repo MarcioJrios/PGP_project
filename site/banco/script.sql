@@ -66,16 +66,6 @@ CREATE TABLE partidas (
 	constraint partidas primary key(id_partida)
 );
 
-CREATE TABLE apostas (
-    id_aposta INTEGER auto_increment,
-    valor decimal(20,2) not null,
-    email varchar(100) not null,
-    id_partida INTEGER not null,
-	constraint apostas primary key(id_aposta),
-	constraint fk_apostas_usuarios foreign key (email) references usuarios(email),
-	constraint fk_apostas_partidas foreign key (id_partida) references partidas(id_partida)
-);
-
 CREATE TABLE equipes (
     id_equipe INTEGER auto_increment,
     nome varchar(100) not null,
@@ -83,6 +73,18 @@ CREATE TABLE equipes (
     sigla varchar(3) not null,
 	constraint equipes primary key(id_equipe),
     constraint fk_equipes_games foreign key (id_game) references games(id_game)
+);
+
+CREATE TABLE apostas (
+    id_aposta INTEGER auto_increment,
+    valor decimal(20,2) not null,
+    email varchar(100) not null,
+    id_partida INTEGER not null,
+    id_equipe INTEGER not null,
+	constraint apostas primary key(id_aposta),
+	constraint fk_apostas_usuarios foreign key (email) references usuarios(email),
+	constraint fk_apostas_partidas foreign key (id_partida) references partidas(id_partida),
+	constraint fk_apostas_equipes foreign key (id_equipe) references equipes(id_equipe)
 );
 
 CREATE TABLE log_login (
