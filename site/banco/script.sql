@@ -35,6 +35,12 @@ CREATE TABLE usuarios (
 	constraint usuarios primary key(email)
 );
 
+CREATE TABLE games (
+    id_game INTEGER auto_increment,
+    nome varchar(100) not null,
+	constraint games primary key(id_game)
+);
+
 CREATE TABLE campeonatos (
     id_camp INTEGER auto_increment,
     tipo_camp INTEGER not null,
@@ -42,7 +48,9 @@ CREATE TABLE campeonatos (
     sigla varchar(6) not null,
     horario_inicio timestamp not null,
     horario_termino timestamp not null,
-	constraint campeonatos primary key(id_camp)
+    id_game INTEGER not null,
+	constraint campeonatos primary key(id_camp),
+    constraint fk_campeonatos_games foreign key (id_game) references games(id_game)
 );
 
 CREATE TABLE partidas (
@@ -55,8 +63,7 @@ CREATE TABLE partidas (
     pontos_equipe2 INTEGER,
     data_cadastro timestamp not null,
     id_camp INTEGER not null,
-	constraint partidas primary key(id_partida),
-    constraint fk_partidas_campeonatos foreign key (id_camp) references campeonatos(id_camp)
+	constraint partidas primary key(id_partida)
 );
 
 CREATE TABLE apostas (
@@ -67,12 +74,6 @@ CREATE TABLE apostas (
 	constraint apostas primary key(id_aposta),
 	constraint fk_apostas_usuarios foreign key (email) references usuarios(email),
 	constraint fk_apostas_partidas foreign key (id_partida) references partidas(id_partida)
-);
-
-CREATE TABLE games (
-    id_game INTEGER auto_increment,
-    nome varchar(100) not null,
-	constraint games primary key(id_game)
 );
 
 CREATE TABLE equipes (
@@ -139,5 +140,5 @@ insert into games (nome) values
 ("Dota 2"),
 ("Tom Clancy's Rainbow Six Siege");
 
-insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino) values 
-(3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-10","2019-11-11");
+insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino, id_game) values 
+(3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-10","2019-11-11",1);
