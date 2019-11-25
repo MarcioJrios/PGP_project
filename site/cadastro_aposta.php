@@ -77,7 +77,6 @@ if(isset($_POST['cadastrar'])){
 					<input type="number" min="10" max="500" name="valor" placeholder="Digite o valor da aposta (10-500)" value="<?=isset($valor) ? $valor : '';?>">
 					<span class="msg-erro" id="msg-aposta_camp"><?=@$erros['aposta'];?></span>
 				</div>
-				<br>
 
 				<input type="hidden" id="id_partida" name="id_partida" value="<?=isset($id_partida) ? $id_partida : '';?>">
 				<div class="botao">
