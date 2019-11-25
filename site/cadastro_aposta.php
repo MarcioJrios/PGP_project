@@ -15,7 +15,10 @@ if(isset($_POST['cadastrar'])){
 	$valor = $_POST['valor'];
 	$partida = $_POST['id_partida'];
 	$id_partida = $partida;
+	$id_equipe = $_POST['id_equipe'];
 	
+	if(empty($id_equipe))
+		$erros['id_equipe'] = "Selecione alguma equipe para apostar";
 	if(empty($valor))
 		$erros['aposta'] = "Digite um valor para a aposta";
 	else{
@@ -27,8 +30,8 @@ if(isset($_POST['cadastrar'])){
 			$erros['aposta'] = "Provavelmente já existe uma aposta para essa partida!";
 	}
 	if(!count($erros)){
-		$statement = $conexao->prepare("INSERT INTO apostas(valor, email, id_partida) VALUES (?, ?, ?)");
-		$statement->bind_param("dsi", $valor, $email, $partida);
+		$statement = $conexao->prepare("INSERT INTO apostas(valor, email, id_partida,id_equipe) VALUES (?, ?, ?, ?)");
+		$statement->bind_param("dsi", $valor, $email, $partida, $id_equipe);
 		$statement->execute();
 		
 		$saldo = $_SESSION['saldo'] - $valor;
@@ -82,6 +85,19 @@ if(isset($_POST['cadastrar'])){
 					<label for="valor" class="label-alinhado">Valor da aposta:</label>
 					<input type="number" min="10" max="500" name="valor" placeholder="Digite o valor da aposta (10-500)" value="<?=isset($valor) ? $valor : '';?>">
 					<span class="msg-erro" id="msg-aposta_camp"><?=@$erros['aposta'];?></span>
+				</div>
+				<div class="form-item">
+					<label for="id_equipe" class="label-alinhado">Equipe:<br>
+					<select name="id_equipe">
+						<option value="">-------- Selecione a equipe --------</option>
+
+					<?php
+						echo '<option value="'.$equipe1['id_equipe'].'">'.$equipe1['nome'].'</option>';
+						echo '<option value="'.$equipe2['id_equipe'].'">'.$equipe2['nome'].'</option>';
+					?>
+					</select>
+					</label>
+					<span class="msg-erro" id="msg-id_equipe"><?=@$erros['id_equipe'];?></span>
 				</div>
 
 				<input type="hidden" id="id_partida" name="id_partida" value="<?=isset($id_partida) ? $id_partida : '';?>">

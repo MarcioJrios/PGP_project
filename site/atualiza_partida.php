@@ -5,7 +5,7 @@ include "includes/adm.php";
 
 if(isset($_SESSION['tipo_usuario'])){
 	if($_SESSION['tipo_usuario']=='1'){
-		header("Location: includes/header.php");
+		header("Location: index.php");
 	}
 }else{
 	header("Location: login.php");
@@ -18,10 +18,33 @@ if(isset($_POST['cadastrar'])){
 	$equipe1 = $_POST['equipe1'];
 	$equipe2 = $_POST['equipe2'];
 	$partida = $_POST['id_partida'];
+	$id_partida = $partida;
+	$email = $_SESSION['email'];
 
-	$statement = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where id_partida = ? ;");
-	$statement->bind_param("iii", $equipe1, $equipe2,$partida);
+	$sttm = $conexao->prepare("UPDATE partidas SET pontos_equipe1 = ?, pontos_equipe2 = ? where id_partida = ? ;");
+	$sttm->bind_param("iii", $equipe1, $equipe2,$partida);
+	$sttm->execute();
+
+	$statement = $conexao->prepare("select valor from apostas WHERE id_partida = ? and email = ?;");
+	$statement->bind_param("is", $partida, $email);
 	$statement->execute();
+	$res = $statement->get_result();
+	$res = $res->fetch_assoc();
+
+	$sttm2 = $conexao->prepare("select * from apostas WHERE id_partida = $partida;");
+	$sttm2->execute();
+	$res2 = $sttm2->get_result();
+	$res2 = $res2->fetch_assoc();
+
+	if($equipe1 == $equipe2){
+		$saldo = $res['saldo'] + $_SESSION['saldo'];
+		$statement = $conexao->prepare("UPDATE usuarios SET saldo = ? where email = ?;");
+		$statement->bind_param("ds", $saldo, $_SESSION['email']);
+		$statement->execute();
+	}
+	else{
+		$saldo = $res['saldo'] + $_SESSION['saldo'];
+	}
 }
 ?>
 
@@ -53,7 +76,7 @@ if(isset($_POST['cadastrar'])){
 				?>
 				<div class="form-item">
 					<label for="equipe1" class="label-alinhado">Resultado da equipe 1 (<?=$equipe1['sigla']?>):</label>
-					<?='<input type="number" name="equipe1" value='.$res['id_partida'].'>';?>
+					<?='<input type="number" min="0" name="equipe1" value='.$res['id_partida'].'>';?>
 					<span class="msg-erro" id="msg-equipe1"><?=@$erros['equipe1'];?></span>
 				</div>
 				<h3>VS</h3>
@@ -67,7 +90,7 @@ if(isset($_POST['cadastrar'])){
 				?>
 				<div class="form-item">
 					<label for="equipe2" class="label-alinhado">Resultado da equipe 2 (<?=$equipe2['sigla']?>):</label>
-					<?='<input type="number" name="equipe2" value='.$res['id_partida'].'>';?>
+					<?='<input type="number" min="0" name="equipe2" value='.$res['id_partida'].'>';?>
 					<span class="msg-erro" id="msg-equipe2"><?=@$erros['equipe2'];?></span>
 				</div>
 
