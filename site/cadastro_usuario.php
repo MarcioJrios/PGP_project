@@ -76,7 +76,7 @@ if(isset($_POST['cadastrar'])){
 							</div>
 							<div class="form-group">
 								<label for="nome" class="label-alinhado">Nome:</label>
-								<input type="text" id="nome" name="nome" size="50" placeholder="Nome completo" pattern="[A-Za-z\s]+$" value="<?=isset($nome) ? $nome : '';?>">
+								<input type="text" id="nome" name="nome" size="50" placeholder="Nome completo" pattern="[A-Za-zÀ-ú0-9-\s]+$" value="<?=isset($nome) ? $nome : '';?>">
 								<span class="msg-erro" id="msg-nome"><?=@$erros['nome'];?></span>
 							</div>
 						</div>
