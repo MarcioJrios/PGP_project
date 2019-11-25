@@ -1,23 +1,30 @@
-<aside class="mais-apostados">
-	<!-- container de mais pedidos -->
-	<div class="lista-partidas">
-	<?php
-	include_once "conexao.php";
-	//include_once "includes/functions.php";
-	//$sql = " select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10;"; 	// busca os 10 mais apostados
-	//$res = mysqli_query($conexao, $sql);
-	//$result = mysqli_fetch_array($res);
-	$statement = $conexao->prepare("select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10");
-	$statement->execute();
-	$assoc = $statement->get_result();
-	while ($resultado = $assoc->fetch_assoc()){
+<?php
+include "conexao.php";
+?>
+
+<section>
+        <?php
+        $idCamp = $_GET['idCamp'];
+        //$sql = " SELECT  * from partidas as a where a.id_camp = $idCamp ;"; 	
+        //$res = mysqli_query($conexao, $sql);
+
+        $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
+	    $statement->execute();
+    	$assoc = $statement->get_result();
+        //$resultado = mysqli_fetch_array($res);
+        //if(!$resultado){
+        //    echo "<p>Nenhuma partida encontrada!</p>";
+        //}
+        //else{
+	    while ($resultado = $assoc->fetch_assoc()){
         #$partida = mysqli_fetch_array($res);
         // busca os detalhes de cada um dos 3 mais pedidos
-		print_r($resultado);
+        print_r($resultado);
         ?>
         <div class="partida">
         <?php
-		$partida = $resultado['id_partida'];
+        $partida = $resultado['id_partida'];
+        
 		$sql = " select * from partidas WHERE id_partida = $partida";
 		$res = mysqli_query($conexao, $sql);
         $partida = mysqli_fetch_array($res);
@@ -65,8 +72,8 @@
 			</div>
         <?=$partida['horario_termino'];?>
         </div>  <!--Div de partida-->
-<?php
-}
+        <?php
+    }
+//}
 ?>
-	</div>
-</aside>
+</section>
