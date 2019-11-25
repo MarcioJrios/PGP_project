@@ -32,6 +32,7 @@ if(isset($_POST['cadastrar'])){
 		$statement->execute();
 		
 		$saldo = $_SESSION['saldo'] - $valor;
+		$_SESSION['saldo'] = $saldo;
 		$statement = $conexao->prepare("UPDATE usuarios SET saldo = ? where email = ?;");
 		$statement->bind_param("ds", $saldo, $_SESSION['email']);
 		$statement->execute();
