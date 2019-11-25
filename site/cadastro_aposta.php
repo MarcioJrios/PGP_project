@@ -31,7 +31,7 @@ if(isset($_POST['cadastrar'])){
 	}
 	if(!count($erros)){
 		$statement = $conexao->prepare("INSERT INTO apostas(valor, email, id_partida,id_equipe) VALUES (?, ?, ?, ?)");
-		$statement->bind_param("dsi", $valor, $email, $partida, $id_equipe);
+		$statement->bind_param("dsii", $valor, $email, $partida, $id_equipe);
 		$statement->execute();
 		
 		$saldo = $_SESSION['saldo'] - $valor;

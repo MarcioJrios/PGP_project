@@ -54,7 +54,7 @@ if(isset($_SESSION['tipo_usuario'])){
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
-						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
+						<input type="submit" id="botao" value="Cadastrar">
 					</div>
 				</div>
 				<div class="botao1">

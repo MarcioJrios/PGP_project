@@ -28,22 +28,29 @@ if(isset($_POST['cadastrar'])){
 	$statement = $conexao->prepare("select valor from apostas WHERE id_partida = ? and email = ?;");
 	$statement->bind_param("is", $partida, $email);
 	$statement->execute();
-	$res = $statement->get_result();
-	$res = $res->fetch_assoc();
+	$res1 = $statement->get_result();
+	$res1 = $res->fetch_assoc();
+	$aposta_user = $res1['valor'];
+
+	$soma = 0;
 
 	$sttm2 = $conexao->prepare("select * from apostas WHERE id_partida = $partida;");
 	$sttm2->execute();
 	$res2 = $sttm2->get_result();
-	$res2 = $res2->fetch_assoc();
+
+	while($resultado = $res2->fetch_assoc())
+		$soma = $soma + $resultado['valor'];
+	
+	print_r($soma);
 
 	if($equipe1 == $equipe2){
-		$saldo = $res['saldo'] + $_SESSION['saldo'];
+		$saldo = $aposta_user + $_SESSION['saldo'];
 		$statement = $conexao->prepare("UPDATE usuarios SET saldo = ? where email = ?;");
 		$statement->bind_param("ds", $saldo, $_SESSION['email']);
 		$statement->execute();
 	}
 	else{
-		$saldo = $res['saldo'] + $_SESSION['saldo'];
+
 	}
 }
 ?>
@@ -100,7 +107,7 @@ if(isset($_POST['cadastrar'])){
 				<div class="botao">
 					<div class="form-item">
 						<label class="label-alinhado"></label>
-						<input type="submit" id="botao" value="Cadastrar" name="cadastrar">
+						<input type="submit" id="botao" value="Cadastrar">
 					</div>
 				</div>
 				<div class="botao1">
