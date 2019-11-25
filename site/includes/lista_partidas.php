@@ -2,14 +2,14 @@
 include "conexao.php";
 ?>
 
-<section>
+<section class="lista_partidas">
         <?php
         $idCamp = $_GET['idCamp'];
         $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
 	    $statement->execute();
     	$assoc = $statement->get_result();
+
 	    while ($resultado = $assoc->fetch_assoc()){
-        // busca os detalhes de cada um dos 3 mais pedidos
 
         ?>
         <div class="partida">
