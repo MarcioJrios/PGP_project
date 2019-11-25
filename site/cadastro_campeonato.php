@@ -15,12 +15,14 @@ $erros = array();
 
 if(isset($_POST['cadastrar'])){
 	$nome = trim($_POST['nome']);
-	$game = trim($_POST['game']);
 	$data_inicio = $_POST['data_inicio'];
 	$data_termino = $_POST['data_termino'];
 	$tipo_camp = trim($_POST['tipo_camp']);
 	$sigla = trim($_POST['sigla']);
 	@$equipe = $_POST['equipe'];
+	$game = $_POST['game'];
+	
+	echo 'k'.$nome.'kk'.$data_inicio.'kk'.$data_termino.'kk'.$tipo_camp.'kk'.$sigla.'kk'.$equipe.'kk'.$game.'kk';
 
 	if(empty($nome))
 		$erros['nome'] = "Digite um nome de campeonato";
@@ -50,13 +52,14 @@ if(isset($_POST['cadastrar'])){
 		$sttm->execute();
 		$result2 = $sttm->get_result();
 
+
 		if($result1->fetch_assoc()){
 			$erros['nome'] = "Provavelmente já existe um campeanato com este nome!";
 		}else if($result2->fetch_assoc()){
 			$erros['sigla'] = "Provavelmente já existe um campeanato com esta sigla!";
 		}else{
-			$statement = $conexao->prepare("INSERT INTO campeonatos(tipo_camp, nome, sigla, horario_inicio, horario_termino) VALUES (?, ?, ?, ?, ?)");
-			$statement->bind_param("issss", $tipo_camp, $nome, $sigla, $data_inicio, $data_termino);
+			$statement = $conexao->prepare("INSERT INTO campeonatos(tipo_camp, nome, sigla, horario_inicio, horario_termino, id_game) VALUES (?, ?, ?, ?, ?, ?)");
+			$statement->bind_param("issssi", $tipo_camp, $nome, $sigla, $data_inicio, $data_termino, $game);
 			$statement->execute();
 
 			$statement = $conexao->prepare("select id_camp from campeonatos where sigla = ?");
