@@ -142,5 +142,16 @@ insert into games (nome) values
 ("Dota 2"),
 ("Tom Clancy's Rainbow Six Siege");
 
+insert into equipes (nome, id_game, sigla) values
+("Pain Gaming", 1, "PNG"),
+("INTZ",1,"ITZ");
+
+insert into partidas (horario_inicio, horario_termino, id_equipe1, id_equipe2, id_camp) values
+("2019-10-09 00:00:00", "2019-10-10", 1, 2, 1);
+
 insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino, id_game) values 
-(3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-10","2019-11-11",1);
+(3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-08","2019-11-13",1);
+
+insert into participantes (id_equipe, id_camp) values
+(1,1),
+(2,1);
