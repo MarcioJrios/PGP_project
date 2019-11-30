@@ -2,7 +2,7 @@
 @session_start();
 
 if(isset($_SESSION['tipo_usuario'])){
-        header("Location: includes/header.php");
+        header("Location: index.php");
     
 }
 ?>
