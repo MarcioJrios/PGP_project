@@ -7,21 +7,21 @@
 	//$total = mysql_num_rows($dados);
 ?>
 <div>
-	<p>Ultimas partidas finalizadas</p>
+	<p>Ultimas partidas finalizadas:</p>
 	<?php
     	while ($res = mysqli_fetch_array($dados)){
     		$n1 = $res['id_equipe1'];
-    		//echo $n1,' x algo';
+			$n2 = $res['id_equipe2'];
+			
     		$cnome1 = "select nome from equipes where id_equipe = $n1";
-    		//echo $cnome1;
-    		$nome1 = mysqli_query($conexao, $cnome1);
-    		//$tot = mysqli_num_rows($nome1);
-    		//$tst = mysqli_fetch_assoc($nome1);
-    		//print_r($nome1);
-    		//echo $tst;
-	?>
-			<p><?=$nome1;?> <?=$res['pontos_equipe1'];?> X <?=$res['pontos_equipe2'];?> <?=$res['id_equipe2'];?></p>
-	<?php
+			$nome1 = mysqli_query($conexao, $cnome1);
+			$nome1 = mysqli_fetch_array($nome1);
+
+			$cnome2 = "select nome from equipes where id_equipe = $n2";
+			$nome2 = mysqli_query($conexao, $cnome2);
+			$nome2 = mysqli_fetch_array($nome2);
+
+			echo '<p>'.$nome1["nome"].' '.$res['pontos_equipe1'].' X '.$res['pontos_equipe2'].' '.$nome2["nome"].' </p>';
 		}
-	?>
+		?>
 </div>
