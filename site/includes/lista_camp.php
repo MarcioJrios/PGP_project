@@ -14,7 +14,7 @@ if(isset($_GET['idGame'])){
         $assoc = $statement->get_result();
         while ($res = $assoc->fetch_assoc()){
             //echo '<p><a href="lista_partidas.php?idGame='.$idGame.'&idCamp='.$res['id_camp'].'" > '.$res['nome'].' </a> </p>';
-            echo '<p><a href="../index.php?idGame='.$idGame.'&idCamp='.$res['id_camp'].'" > '.$res['nome'].' </a> </p>';
+            echo '<p><a href="index.php?idGame='.$idGame.'&idCamp='.$res['id_camp'].'" > '.$res['nome'].' </a> </p>';
         }
         ?>
         </form>
