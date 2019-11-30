@@ -10,8 +10,7 @@ if(isset($_GET['idCamp'])){
 	$statement->execute();
         $assoc = $statement->get_result();
 	
-	while ($resultado = $assoc->fetch_assoc()){
-	}?>
+	while ($resultado = $assoc->fetch_assoc()){?>
 	
         <div class="partida">
 	<h3>Partidas para apostar</h3>
