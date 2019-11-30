@@ -21,8 +21,10 @@
 
 
 		<div class="logo-class">
+			<a href="index.php">
 			<img src="imagens/logo.png" alt="logo_pilabet">
 			<figcaption></figcaption>
+			</a>
 		</div>
 
 		<div class="login-class">
