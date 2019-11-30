@@ -11,10 +11,11 @@ if(isset($_GET['idCamp'])){
         $assoc = $statement->get_result();
 	
 	while ($resultado = $assoc->fetch_assoc()){
-	}
+	}?>
 	
         <div class="partida">
 	<h3>Partidas para apostar</h3>
+	
         <?php
 	$partida = $resultado['id_partida'];
 	$sql = " select * from partidas WHERE id_partida = $partida";
