@@ -13,7 +13,7 @@ include "conexao.php";
 		$statement->execute();
 		$assoc = $statement->get_result();
 		while ($res = $assoc->fetch_assoc()){
-			echo '<p><a href="../index.php?idGame='.$res['id_game'].'" > '.$res['nome'].' </a> </p>';
+			echo '<p><a href="index.php?idGame='.$res['id_game'].'" > '.$res['nome'].' </a> </p>';
 			//echo '<p><a href="lista_camp.php?idGame='.$res['id_game'].'" > '.$res['nome'].' </a> </p>';
 		}
 		?>
