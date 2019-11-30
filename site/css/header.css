@@ -30,11 +30,11 @@ footer {
 	font-size: 1.03em;
 }
 
-.footer, .usuario-class, .logo-class, .login-class, .col-10, .botao, .botao1{
+.footer, .usuario-class, .logo-class, .login-class, .col-10, .botao, .botao1, .index, .asides_pfinalizadas, .asides_maisapost, .sections{
 	float: left;
 }
 
-.footer, .col-10, .botao {
+.footer, .col-10, .botao, .index {
 	clear: left;
 }
 
@@ -202,4 +202,20 @@ input[type="submit"]:hover, input[type="reset"]:hover, #buscar:hover {
 input[type="checkbox"]{
 	width: initial;
 	height: initial;
+}
+
+.asides_pfinalizadas, .asides_maisapost, .sections {
+    display: flex;
+}
+
+.sections {
+	width: 80%;
+}
+
+.index {
+	padding: 20px;
+	width: 100%;
+    background-color: rgba(240, 246, 247, 0.842); 
+	border-radius: 0px;  
+	border: 5px solid #222222;
 }
