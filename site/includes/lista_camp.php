@@ -1,14 +1,14 @@
 <?php
 include "conexao.php";
-?>
 
-<section class="lista_camp">
+if(isset($_GET['idGame'])){
+    $idGame = $_GET['idGame'];
+    ?>
+    <section class="lista_camp">
     <div class="campeonatos_disponiveis">
         <h2>Campeonatos Disponíveis</h2>
         <div class="lista_campeonatos">
         <?php 
-        $idGame = $_GET['idGame'];
-        print_r($idGame);
         $statement = $conexao->prepare("SELECT DISTINCT a.id_camp, a.nome, a.sigla from campeonatos as a join games where a.id_game = $idGame;");
         $statement->execute();
         $assoc = $statement->get_result();
@@ -21,3 +21,9 @@ include "conexao.php";
         </div>
     </div>
 </section>
+<?php
+}else{
+    
+}
+?>
+

@@ -1,13 +1,14 @@
 <?php
 include "conexao.php";
-?>
 
-<section class="lista_partidas">
+if(isset($GET_['idCamp'])){
+    ?>
+    <section class="lista_partidas">
         <?php
         $idCamp = $_GET['idCamp'];
         $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
 	    $statement->execute();
-    	$assoc = $statement->get_result();
+        $assoc = $statement->get_result();
 
 	    while ($resultado = $assoc->fetch_assoc()){
 
@@ -68,3 +69,9 @@ include "conexao.php";
 //}
 ?>
 </section>
+<?php
+}else{
+    
+}
+
+?>
