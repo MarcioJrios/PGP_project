@@ -82,7 +82,7 @@ if(isset($_POST['cadastrar'])){
 		$sttm = $conexao->prepare("UPDATE usuarios SET saldo = ? WHERE email = ?");
 		$sttm->bind_param("ds", $saldo, $resultado['email']);
 		$sttm->execute();
-
+		$_SESSION['saldo'] = $saldo;
 	}
 }
 ?>
