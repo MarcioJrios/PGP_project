@@ -27,7 +27,7 @@ CREATE TABLE usuarios (
     nome varchar(100) not null,
     nickname varchar(100) not null,
     email varchar(100) not null,
-    data_nasc timestamp not null,
+    data_nasc date not null,
     sexo char not null,
     senha varchar(100) not null,
     tipo_usuario INTEGER not null,
@@ -46,8 +46,8 @@ CREATE TABLE campeonatos (
     tipo_camp INTEGER not null,
     nome varchar(100) not null,
     sigla varchar(6) not null,
-    horario_inicio timestamp not null,
-    horario_termino timestamp not null,
+    horario_inicio date not null,
+    horario_termino date not null,
     id_game INTEGER not null,
 	constraint campeonatos primary key(id_camp),
     constraint fk_campeonatos_games foreign key (id_game) references games(id_game)
@@ -121,11 +121,6 @@ ON usuarios
 FOR EACH ROW 
 SET NEW.saldo = 1000;
 
-CREATE TRIGGER insere_data_acesso_log BEFORE INSERT
-ON log_login
-FOR EACH ROW 
-SET NEW.data_access = CURRENT_TIMESTAMP;
-
 CREATE TRIGGER insere_data_cadastro_partidas BEFORE INSERT
 ON partidas
 FOR EACH ROW 
@@ -147,7 +142,7 @@ insert into equipes (nome, id_game, sigla) values
 ("INTZ",1,"ITZ");
 
 insert into partidas (horario_inicio, horario_termino, id_equipe1, id_equipe2, id_camp) values
-("2019-10-09 00:00:00", "2019-10-10", 1, 2, 1);
+("2019-10-09 13:00", "2019-10-09 14:00", 1, 2, 1);
 
 insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino, id_game) values 
 (3,"Campeonanto Brasileiro de League of Legends","CBLOL","2019-10-08","2019-11-13",1);
