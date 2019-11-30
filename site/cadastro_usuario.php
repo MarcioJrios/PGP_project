@@ -90,9 +90,9 @@ if(isset($_POST['cadastrar'])){
 								
 								<label for="gender">Sexo</label>
 								<div class="form-flex">
-									<input type="radio" id="male" name="sexo" value="<?=isset($sexo) ? 'm' : '';?>" checked="checked"/><label for="male">Masculino</label>
+									<input type="radio" id="male" name="sexo" value="<?=isset($sexo) ? "m" : '';?>" checked="checked"/><label for="male">Masculino</label>
 									
-									<input type="radio" name="sexo" id="female" value="<?=isset($sexo) ? 'f' : '';?>"/><label for="female">Feminino</label>
+									<input type="radio" name="sexo" id="female" value="<?=isset($sexo) ? "f" : '';?>"/><label for="female">Feminino</label>
 								</div>	
 							</div>
 						</div>
