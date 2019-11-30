@@ -1,7 +1,7 @@
 <?php
 include "conexao.php";
 
-if(isset($GET_['idCamp'])){
+if(isset($_GET['idCamp'])){
     ?>
     <section class="lista_partidas">
         <?php
