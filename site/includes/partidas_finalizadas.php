@@ -7,7 +7,7 @@
 	//$total = mysql_num_rows($dados);
 ?>
 <div>
-	<p>Ultimas partidas finalizadas:</p>
+	<h3>Ultimas partidas finalizadas:</h3>
 	<?php
     	while ($res = mysqli_fetch_array($dados)){
     		$n1 = $res['id_equipe1'];
@@ -21,7 +21,7 @@
 			$nome2 = mysqli_query($conexao, $cnome2);
 			$nome2 = mysqli_fetch_array($nome2);
 
-			echo '<p>'.$nome1["nome"].' '.$res['pontos_equipe1'].' X '.$res['pontos_equipe2'].' '.$nome2["nome"].' </p>';
+			echo '<p><b>'.$nome1["nome"].'</b> '.$res['pontos_equipe1'].' VS '.$res['pontos_equipe2'].' <b>'.$nome2["nome"].'</b> </p>';
 		}
 		?>
 </div>
