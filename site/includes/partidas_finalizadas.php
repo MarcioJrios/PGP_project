@@ -9,6 +9,9 @@
 <div>
 	<h3>Ultimas partidas finalizadas:</h3>
 	<?php
+	if(!$assoc->fetch_assoc())
+		echo '<p>Não há partidas finalizadas</p>';
+	else{
     	while ($res = mysqli_fetch_array($dados)){
     		$n1 = $res['id_equipe1'];
 			$n2 = $res['id_equipe2'];
@@ -23,5 +26,5 @@
 
 			echo '<p><b>'.$nome1["nome"].'</b> '.$res['pontos_equipe1'].' VS '.$res['pontos_equipe2'].' <b>'.$nome2["nome"].'</b> </p>';
 		}
-		?>
+	}?>
 </div>
