@@ -147,8 +147,8 @@ insert into equipes (nome, id_game, sigla) values
 ("INTZ",1,"ITZ");
 
 insert into partidas (horario_inicio, horario_termino, id_equipe1, id_equipe2, id_camp) values
-("2019-10-07 13:00", "2019-10-07 14:00", 1, 2, 1),
-("2019-10-10 13:00", "2019-10-10 14:00", 3, 4, 2),
+("2019-10-07 13:00", "2019-10-07 14:00", 1, 2, 2),
+("2019-10-10 13:00", "2019-10-10 14:00", 3, 4, 1),
 ("2019-10-09 13:00", "2019-10-09 14:00", 5, 6, 1);
 
 insert into campeonatos (tipo_camp, nome, sigla, horario_inicio, horario_termino, id_game) values 
