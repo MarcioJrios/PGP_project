@@ -139,10 +139,10 @@ insert into games (nome) values
 ("Tom Clancy's Rainbow Six Siege");
 
 insert into equipes (nome, id_game, sigla) values
-("Equipe Y", 1, "EQY"),
-("Equipe Z", 1, "EQZ"),
-("Equipe A", 2, "EQA"),
-("Equipe B", 2, "EQB"),
+("Equipe A", 1, "EQA"),
+("Equipe B", 1, "EQB"),
+("Equipe Y", 2, "EQY"),
+("Equipe Z", 2, "EQZ"),
 ("Pain Gaming", 1, "PNG"),
 ("INTZ",1,"ITZ");
 
