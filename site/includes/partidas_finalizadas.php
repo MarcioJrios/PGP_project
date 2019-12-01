@@ -9,7 +9,7 @@
 <div>
 	<h3>Ultimas partidas finalizadas:</h3>
 	<?php
-	if(!$assoc->fetch_assoc())
+	if(!$dados->fetch_assoc())
 		echo '<p>Não há partidas finalizadas</p>';
 	else{
     	while ($res = mysqli_fetch_array($dados)){
