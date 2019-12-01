@@ -42,7 +42,7 @@ if(isset($_GET['idCamp'])){
         $equipe2 = mysqli_query($conexao, $sql);
 	$equipe2 = mysqli_fetch_array($equipe2);
 		
-	echo ''.$equipe1['sigla'].' VS '.$equipe2['sigla'].'<p> '.$partida['horario_termino'].'</p>';?>
+	echo '<a href="cadastro_aposta.php?partida='.$partida['id_partida'].'">'.$equipe1['sigla'].' VS '.$equipe2['sigla'].'<br> '.$partida['horario_inicio'].'</a>';?>		
         </div>  <!--Div de partida-->
 	<?php
     }?>
