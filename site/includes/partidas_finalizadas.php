@@ -4,12 +4,12 @@
 
 		<h3>Ultimas partidas finalizadas</h3>
 		<?php
-		$statement = $conexao->prepare("select id_equipe1, id_equipe2, pontos_equipe1, pontos_equipe2 from partidas where pontos_equipe1 and pontos_equipe2 is not null order by horario_termino desc limit 3");
-		$statement->execute();
-		$statement = $statement->get_result();
-		if(!$statement)
+		$sql = "select id_equipe1, id_equipe2, pontos_equipe1, pontos_equipe2 from partidas where pontos_equipe1 and pontos_equipe2 is not null order by horario_termino desc limit 3";
+		$resul = xd($conexao, $sql);
+		if(!$resul->fetch_assoc())
 			echo '<p>Não há partidas finalizadas</p>';
 		else{
+			$resul = xd($conexao, $sql);
 			while ($res = $statement->fetch_assoc()){
 				$n1 = $res['id_equipe1'];
 				$n2 = $res['id_equipe2'];
