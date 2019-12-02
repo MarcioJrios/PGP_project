@@ -9,13 +9,12 @@ if(isset($_GET['idCamp'])){
         $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
 	$statement->execute();
         $assoc = $statement->get_result();
-	
-	while ($resultado = $assoc->fetch_assoc()){?>
-	
-        <div class="partida">
-	<h3>Partidas para apostar</h3>
-	
+	?>
+	    
+        <h3>Partidas para apostar</h3>
+	    
         <?php
+	while ($resultado = $assoc->fetch_assoc()){
 	$partida = $resultado['id_partida'];
 	$sql = " select * from partidas WHERE id_partida = $partida";
 	$res = mysqli_query($conexao, $sql);
