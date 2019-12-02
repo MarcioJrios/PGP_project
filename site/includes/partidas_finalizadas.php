@@ -2,7 +2,7 @@
 	<!-- container de partidas finalizadas -->
 	<div class="lista-partidas">
 
-		<h3>Ultimas partidas finalizadas:</h3>
+		<h3>Ultimas partidas finalizadas</h3>
 		<?php
 		$statement = $conexao->prepare("select id_equipe1, id_equipe2, pontos_equipe1, pontos_equipe2 from partidas where pontos_equipe1 and pontos_equipe2 is not null order by horario_termino desc limit 3");
 		$statement->execute();
