@@ -197,20 +197,23 @@ input[type="checkbox"]{
 	height: initial;
 }
 
-.sections {
-	width: 60%;
+.sections{
+	width: 70%;
 }
 
 .asides {
+	width: 30%;
+}
+
+.partida_finalizadas{
+	width: 60%;
+}
+
+.mais_apostados {
 	width: 40%;
 }
 
-.partida_finalizadas, .mais_apostados {
-	width: 50%;
-}
-
 .index, .menu_adm, #cad_aposta {
-	padding: 20px;
 	width: 100%;
 	background-color: rgba(240, 246, 247, 0.842); 
 	border-radius: 0px;  
