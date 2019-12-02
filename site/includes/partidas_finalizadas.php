@@ -10,7 +10,7 @@
 			echo '<p>Não há partidas finalizadas</p>';
 		else{
 			$resul = xd($conexao, $sql);
-			while ($res = $statement->fetch_assoc()){
+			while ($res = $resul->fetch_assoc()){
 				$n1 = $res['id_equipe1'];
 				$n2 = $res['id_equipe2'];
 				
