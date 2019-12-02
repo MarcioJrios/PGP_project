@@ -219,3 +219,7 @@ input[type="checkbox"]{
 	border-radius: 0px;  
 	border: 5px solid #222222;
 }
+
+.lista_camp, .lista_partidas, .lista_esports {
+	padding: 15px;
+}
