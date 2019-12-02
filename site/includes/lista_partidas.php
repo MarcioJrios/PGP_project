@@ -1,9 +1,9 @@
 <?php
-include "conexao.php";
 
 if(isset($_GET['idCamp'])){
     ?>
     <section class="lista_partidas">
+	<div class="partidas">
         <?php
         $idCamp = $_GET['idCamp'];
         $statement = $conexao->prepare("SELECT  * from partidas as a where a.id_camp = $idCamp");
@@ -24,11 +24,6 @@ if(isset($_GET['idCamp'])){
         $sql = " select sigla from campeonatos WHERE id_camp = $camp";
 	$camp = mysqli_query($conexao, $sql);
         $camp = mysqli_fetch_array($res);
-        ?>
-
-        <h4><?=$camp['sigla'];?></h4>
-
-        <?php
 
         #equipe 1
         $equipe1 = $partida['id_equipe1'];
@@ -39,12 +34,11 @@ if(isset($_GET['idCamp'])){
         $equipe2 = $partida['id_equipe2'];
         $sql = " select * from equipes WHERE id_equipe = $equipe2";
         $equipe2 = mysqli_query($conexao, $sql);
-	$equipe2 = mysqli_fetch_array($equipe2);
-		
-	echo '<a href="cadastro_aposta.php?partida='.$partida['id_partida'].'">'.$equipe1['sigla'].' VS '.$equipe2['sigla'].'<br> '.$partida['horario_inicio'].'</a>';?>		
-        </div>  <!--Div de partida-->
-	<?php
-    }?>
+        $equipe2 = mysqli_fetch_array($equipe2);
+        
+	echo '<div><a href="cadastro_aposta.php?partida='.$partida['id_partida'].'">'.$equipe1['sigla'].' VS '.$equipe2['sigla'].'<br> '.$partida['horario_inicio'].'</a></div>';
+        }?>
+    </div >  <!--Div de partida-->
 </section>
 <?php
 }?>
