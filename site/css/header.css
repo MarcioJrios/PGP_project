@@ -23,14 +23,11 @@ header {
 footer {
 	background-color: #002a32;
 	color: white;
-	display: flex;
-	justify-content: center;
-	text-align: center;
 	width: 100%;
 	font-size: 1.03em;
 }
 
-.footer, .usuario-class, .logo-class, .login-class, .col-10, .botao, .botao1, .index, .asides_pfinalizadas, .asides_maisapost, .sections{
+.footer, .usuario-class, .logo-class, .login-class, .col-10, .botao, .botao1, .index, .sections, .partida_finalizadas, .mais_apostados{
 	float: left;
 }
 
@@ -42,11 +39,6 @@ footer {
 	background-color: #c2d4e2;
 	width: 100%;
 	color: black;
-	clear: left;
-	width: 100%;
-	display: flex;
-	text-align: center;
-	justify-content: center;
 }
 
 .col-10 ::placeholder{
@@ -175,26 +167,27 @@ input[type="submit"]:hover, input[type="reset"]:hover, #buscar:hover {
 }
 
 .menu_adm {
-    background-color: #f0f3f0; 
-    border-radius: 0px;  
-    border: 5px solid #002a32;
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    justify-content: center;
+	background-color: #f0f3f0; 
+	border-radius: 0px;  
+	border: 5px solid #002a32;
+	padding: 15px;
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+	justify-content: center;
 }
 
 .item {
-    border-bottom: 3px solid #222222;
-    margin-right: 30px;
+	border-bottom: 3px solid #222222;
+	margin-right: 30px;
 }
 
 .item:hover {
 	border-color: green;
 }
 
-.adm, .index, .sections{
+footer, .adm, .index, .sections, .col-10, .menu_adm{
+	display: flex;
 	text-align: center;
 	justify-content: center;
 }
@@ -204,18 +197,22 @@ input[type="checkbox"]{
 	height: initial;
 }
 
-.asides_pfinalizadas, .asides_maisapost, .sections {
-	display: flex;
-}
-
 .sections {
-	width: 80%;
+	width: 60%;
 }
 
-.index {
+.asides {
+	width: 40%;
+}
+
+.partida_finalizadas, .mais_apostados {
+	width: 50%;
+}
+
+.index, .menu_adm, #cad_aposta {
 	padding: 20px;
 	width: 100%;
-    background-color: rgba(240, 246, 247, 0.842); 
+	background-color: rgba(240, 246, 247, 0.842); 
 	border-radius: 0px;  
 	border: 5px solid #222222;
 }
