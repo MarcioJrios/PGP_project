@@ -13,6 +13,7 @@ include "includes/header.php";
     </div>
     <div class = "asides">
     <?php
+    include "includes/select.php";
     include "includes/partidas_finalizadas.php";
     include "includes/mais_apostados.php";
     ?>
