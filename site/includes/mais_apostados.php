@@ -6,7 +6,6 @@
 		<h3>Mais Apostados</h3>
 		<?php
 		$sql = "select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 3";
-		include "select.php";
 		$resul = xd($conexao, $sql);
 		if(!$resul->fetch_assoc())
 			echo '<p>Não há partidas em andamento com apostas</p>';
