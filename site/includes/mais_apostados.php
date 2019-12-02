@@ -5,17 +5,14 @@
 
 		<h3>Mais Apostados</h3>
 		<?php
-		include_once "conexao.php";
-
-		$statement = $conexao->prepare("select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 10");
+		$statement = $conexao->prepare("select distinct apostas.id_partida, count(*) as ocorrencias from apostas join partidas on apostas.id_partida = partidas.id_partida group by id_partida order by ocorrencias desc limit 3");
 		$statement->execute();
-		$assoc = $statement->get_result();
-		if(!$assoc->fetch_assoc())
+		$statement = $statement->get_result();
+		if(!$statement)
 			echo '<p>Não há partidas em andamento com apostas</p>';
 		else{
-			while ($resultado = $assoc->fetch_assoc()){
-			?>
-			<?php
+			while ($resultado = $statement->fetch_assoc()){
+
 			$partida = $resultado['id_partida'];
 			$sql = " select * from partidas WHERE id_partida = $partida";
 			$res = mysqli_query($conexao, $sql);
@@ -28,7 +25,6 @@
 			?>
 			<h4><?=$camp['sigla'];?></h4>
 			<?php
-
 
 			#equipe 1
 			$equipe1 = $partida['id_equipe1'];
